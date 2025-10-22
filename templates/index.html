@@ -23,7 +23,7 @@
             </h2>
 
             <div class="cards">
-                <a href="#" class="card">
+                <a href="{{ url_for('condicionales') }}" class="card">
                     <span class="card__icon">🔀</span>
                     <h3 class="card__title">Condicionales</h3>
                     <p class="card__description">
@@ -31,7 +31,7 @@
                     </p>
                 </a>
 
-                <a href="#" class="card">
+                <a href="{{ url_for('ciclos') }}" class="card">
                     <span class="card__icon">🔄</span>
                     <h3 class="card__title">Ciclos</h3>
                     <p class="card__description">
@@ -39,23 +39,7 @@
                     </p>
                 </a>
 
-                <a href="#" class="card">
-                    <span class="card__icon">📦</span>
-                    <h3 class="card__title">Variables</h3>
-                    <p class="card__description">
-                        Entiende cómo almacenar y manipular datos usando diferentes tipos de variables.
-                    </p>
-                </a>
-
-                <a href="#" class="card">
-                    <span class="card__icon">⚡</span>
-                    <h3 class="card__title">Funciones</h3>
-                    <p class="card__description">
-                        Descubre cómo crear bloques de código reutilizables y organizados mediante funciones.
-                    </p>
-                </a>
-
-                <a href="#" class="card">
+                <a href="{{ url_for('arrays') }}" class="card">
                     <span class="card__icon">📊</span>
                     <h3 class="card__title">Arrays</h3>
                     <p class="card__description">
@@ -63,13 +47,30 @@
                     </p>
                 </a>
 
-                <a href="#" class="card">
-                    <span class="card__icon">🎯</span>
-                    <h3 class="card__title">Objetos</h3>
+                <a href="{{ url_for('matrices') }}" class="card">
+                    <span class="card__icon">🔢</span>
+                    <h3 class="card__title">Matrices</h3>
                     <p class="card__description">
-                        Explora la programación orientada a objetos y cómo modelar datos complejos.
+                        Aumenta la dificultad con arreglos bidimensionales.
                     </p>
                 </a>
+
+                <a href="{{ url_for('funciones') }}" class="card">
+                    <span class="card__icon">⚡</span>
+                    <h3 class="card__title">Funciones</h3>
+                    <p class="card__description">
+                        Descubre cómo crear bloques de código reutilizables y organizados mediante funciones.
+                    </p>
+                </a>
+
+                <a href="{{ url_for('strings') }}" class="card">
+                    <span class="card__icon">📝</span>
+                    <h3 class="card__title">Strings</h3>
+                    <p class="card__description">
+                        Manipula cadenas de texto con métodos de búsqueda, transformación y formato.
+                    </p>
+                </a>
+
             </div>
         </section>
     </main>
