@@ -15,16 +15,56 @@
             --color-light: #e0f7ff;
             --color-text: #ffffff;
             --color-text-secondary: #a8dadc;
+
+            --fw-light: 300;
+            --fw-normal: 400;
+            --fw-medium: 600;
+            --fw-bold: 700;
+            --fw-black: 800;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, var(--color-darker) 0%, var(--color-dark) 50%, var(--color-secondary) 100%);
             color: var(--color-text);
             min-height: 100vh;
             line-height: 1.6;
             font-family: "Roboto Condensed", sans-serif;
         }
+
+        /* Base  */
+        p{font-size: clamp(1rem, 0.905rem + 0.526vw, 1.3rem);}
+
+        /* Componentes */
+        .container{
+            width: min(1200px, 90%);
+            margin: 0 auto;
+        }
+
+        .neon{
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 8px rgba(0,217,255,0.15);
+        }
+
+        @keyframes glow {
+            from {filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));}
+            to {filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.8));}
+        }
+
+        /* Utilidades */
+        .fw-300 { font-weight: var(--fw-light); }
+        .fw-400 { font-weight: var(--fw-normal); }
+        .fw-600 { font-weight: var(--fw-medium); }
+        .fw-700 { font-weight: var(--fw-bold); }
+        .fw-800 { font-weight: var(--fw-black); }
+
+
+        .italic  { font-style: italic; }
+        .text-muted { color: var(--color-text-secondary); }
+        .text-accent { color: var(--color-accent); }
 
         /* Header */
         .header {
@@ -34,22 +74,17 @@
             box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 10;
             border-bottom: 2px solid var(--color-primary);
         }
 
         .header__container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .header__logo {
-            font-size: 1.8rem;
-            font-weight: bold;
             color: var(--color-primary);
             text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
         }
@@ -65,18 +100,4 @@
 
         .footer__text {
             color: var(--color-text-secondary);
-        }
-
-        @media (max-width: 768px) {
-            .hero__title {
-                font-size: 2rem;
-            }
-
-            .hero__subtitle {
-                font-size: 1.1rem;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
         }

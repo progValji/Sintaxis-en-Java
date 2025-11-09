@@ -1,0 +1,88 @@
+        /* primera seccion*/
+        .main__container{
+            padding: 4.5rem 0;
+        }
+
+        .main__container  div:first-child{
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main__title{
+            font-size: clamp(3rem, 2.526rem + 2.632vw, 4.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .main__subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1.5rem;
+            @media (width <= 550px) {font-size: 1.2rem;}
+        }
+
+        .main__intro {
+            width: min(800px, 90%);
+            margin: 0 auto;
+            background: rgba(10, 77, 104, 0.3);
+            border-left: 8px solid var(--color-primary);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1);
+        }
+
+        .main__intro h2 {color: var(--color-primary);}
+
+        .main__intro p{
+            color: var(--color-text-secondary);
+            &:first-of-type{margin: 1rem 0;}
+        }
+
+        /* segunda seccion */
+        .main__container:nth-of-type(2) {color: var(--color-primary);}
+
+        .main__container:nth-of-type(2) h1{
+            text-align: center;
+            font-size: 2.5rem;
+        }
+
+        /* Cards Grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(10, 77, 104, 0.2);
+            border: 2px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 12px 40px rgba(0, 217, 255, 0.3);
+            background: rgba(10, 77, 104, 0.4);
+        }
+
+        .card__icon {
+            font-size: 3rem;
+            display: block;
+        }
+
+        .card__title {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .card__description {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }

@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='CSS/main.css')}}">
     <title>Aprendizaje de Sintaxis - Programación</title>
 </head>
 <body>
     <header class="header">
-        <div class="header__container">
-            <div class="header__logo">⚡ SyntaxLab</div>
+        <div class="container header__container">
+            <h1 class="header__logo italic fw-700">⚡ SyntaxLab</h1>
+            <h1 class="header__logo italic fw-700">Valji</h1>
         </div>
     </header>
     {% block contenido %}
     
     {% endblock %}
     <footer class="footer">
-        <p class="footer__text">© 2025 SyntaxLab - Aprende a programar con confianza - <em>VALJI</em></p>
+        <p class="footer__text">© 2025 SyntaxLab - Aprende a programar con confianza</p>
     </footer>
 </body>
 </html>
