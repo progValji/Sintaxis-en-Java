@@ -1,0 +1,76 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/prism.css')}}">
+{% extends "base.html" %}
+
+{% block contenido %}
+    <main>
+        <section class="mainContainer container">
+            <div>
+                <h1 class="main__title neon">Estructuras Condicionales</h1>
+    
+                <p>Las estructuras condicionales en programación son instrucciones que permiten tomar decisiones 
+                dentro de un programa. Su función principal es ejecutar diferentes bloques de código según 
+                se cumpla o no una determinada condición lógica (por ejemplo, si una variable tiene cierto 
+                valor).</p>
+    
+                <p>En otras palabras, permiten que el programa reaccione ante distintas situaciones.
+                El tipo más común de estructura condicional es el if, que evalúa una condición y ejecuta un bloque de código
+                solo si esta es verdadera. También existen variantes como if...else (para elegir entre dos opciones) y 
+                switch o else if (para múltiples alternativas).</p>
+            </div>
+            <div>
+                <article>
+                    <h1>1. if</h1>
+                    <p>La estructura más básica. Ejecuta un bloque de código si la condición es verdadera, y 
+                        opcionalmente otro bloque si es falsa.</p>
+                    <pre class="language-java"><code class="line-numbers">
+if(condicion){
+    // codigo si se cumple la condicion
+}</code></pre>
+                </article>
+                <article>
+                    <h1>2. if else</h1>
+                    <pre class="language-java"><code class="line-numbers">
+if (condicion) {
+    // código si es verdadero
+} else {
+    // código si es falso
+}
+</code></pre>
+                </article>
+                <article>
+                    <h1>3. else if</h1>
+                    <p>Permite evaluar múltiples condiciones en secuencia. Se ejecuta el primer bloque cuya 
+                        condición sea verdadera.</p>
+                    <pre class="language-java"><code class="line-numbers">
+if (condicion 1) {
+    // código si la condicion 1 es verdadera
+} else if(condicion 2){
+    // código si la condicion 2 es verdadera
+}else{
+    // codigo si ninguna de las anteriores condicionales no se cumplen
+}
+</code></pre>
+                </article>
+                <article>
+                    <h1>4. switch</h1>
+                    <p>Útil cuando necesitas comparar una variable contra múltiples valores constantes. Es más 
+                        legible que múltiples else if cuando se trata de comparaciones de igualdad.</p>
+                    <pre class="language-java"><code class="line-numbers">
+switch (variable) {
+case valor1: 
+    // código
+    break; 
+case valor2: 
+    // código
+    break;
+default: 
+    // código por defecto 
+}
+</code></pre>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/prism.js')}}"></script>
+{% endblock %}

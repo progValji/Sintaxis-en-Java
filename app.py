@@ -8,7 +8,7 @@ def index():
 
 @app.route("/condicionales")
 def condicionales():
-    return 'Condicionales'
+    return render_template('condicionales.html')
 
 @app.route("/ciclos")
 def ciclos():

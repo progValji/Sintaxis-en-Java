@@ -40,6 +40,8 @@
             margin: 0 auto;
         }
 
+        .mainContainer{padding: 4.5rem 0;}
+
         .neon{
             background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
             -webkit-background-clip: text;

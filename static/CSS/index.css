@@ -1,8 +1,4 @@
         /* primera seccion*/
-        .main__container{
-            padding: 4.5rem 0;
-        }
-
         .main__container  div:first-child{
             text-align: center;
             margin-bottom: 3rem;
