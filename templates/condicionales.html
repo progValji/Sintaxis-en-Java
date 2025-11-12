@@ -5,30 +5,32 @@
     <main>
         <section class="mainContainer container">
             <div>
-                <h1 class="main__title neon">Estructuras Condicionales</h1>
+                <h1 class="mainTitle neon">Estructuras Condicionales</h1>
     
-                <p>Las estructuras condicionales en programación son instrucciones que permiten tomar decisiones 
-                dentro de un programa. Su función principal es ejecutar diferentes bloques de código según 
-                se cumpla o no una determinada condición lógica (por ejemplo, si una variable tiene cierto 
+                <p class="fw-300">Las estructuras condicionales en programación son instrucciones que permiten tomar decisiones 
+                dentro de un programa. Su función principal es ejecutar <span class="fw-600 text-muted">diferentes bloques de código</span> según 
+                se cumpla o no una determinada <span class="fw-600 text-muted">condición lógica</span> (por ejemplo, si una variable tiene cierto 
                 valor).</p>
     
-                <p>En otras palabras, permiten que el programa reaccione ante distintas situaciones.
+                <p class="fw-300">En otras palabras, permiten que el programa reaccione ante distintas situaciones.
                 El tipo más común de estructura condicional es el if, que evalúa una condición y ejecuta un bloque de código
                 solo si esta es verdadera. También existen variantes como if...else (para elegir entre dos opciones) y 
                 switch o else if (para múltiples alternativas).</p>
             </div>
-            <div>
-                <article>
-                    <h1>1. if</h1>
-                    <p>La estructura más básica. Ejecuta un bloque de código si la condición es verdadera, y 
-                        opcionalmente otro bloque si es falsa.</p>
+            <div class="topics">
+                <article class="topic">
+                    <h1 class="topic__title italic">1. if</h1>
+                    <p class="topic__paragraph fw-300">La estructura más básica. Ejecuta un bloque de código si la condición es verdadera</p>
                     <pre class="language-java"><code class="line-numbers">
 if(condicion){
     // codigo si se cumple la condicion
 }</code></pre>
                 </article>
-                <article>
-                    <h1>2. if else</h1>
+                <article class="topic">
+                    <h1 class="topic__title italic">2. if else</h1>
+                    <p class="topic__paragraph fw-300">Esta estructura permite ejecutar un bloque de codigo si la condicion
+                        es verdadera y un caso para cuando sea falsa
+                    </p>
                     <pre class="language-java"><code class="line-numbers">
 if (condicion) {
     // código si es verdadero
@@ -37,9 +39,9 @@ if (condicion) {
 }
 </code></pre>
                 </article>
-                <article>
-                    <h1>3. else if</h1>
-                    <p>Permite evaluar múltiples condiciones en secuencia. Se ejecuta el primer bloque cuya 
+                <article class="topic">
+                    <h1 class="topic__title italic">3. else if</h1>
+                    <p class="topic__paragraph fw-300">Permite evaluar múltiples condiciones en secuencia. Se ejecuta el primer bloque cuya 
                         condición sea verdadera.</p>
                     <pre class="language-java"><code class="line-numbers">
 if (condicion 1) {
@@ -51,9 +53,9 @@ if (condicion 1) {
 }
 </code></pre>
                 </article>
-                <article>
-                    <h1>4. switch</h1>
-                    <p>Útil cuando necesitas comparar una variable contra múltiples valores constantes. Es más 
+                <article class="topic">
+                    <h1 class="topic__title italic">4. switch</h1>
+                    <p class="topic__paragraph fw-300">Útil cuando necesitas comparar una variable contra múltiples valores constantes. Es más 
                         legible que múltiples else if cuando se trata de comparaciones de igualdad.</p>
                     <pre class="language-java"><code class="line-numbers">
 switch (variable) {

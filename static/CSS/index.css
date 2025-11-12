@@ -1,13 +1,5 @@
         /* primera seccion*/
-        .main__container  div:first-child{
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .main__title{
-            font-size: clamp(3rem, 2.526rem + 2.632vw, 4.5rem);
-            margin-bottom: 1rem;
-        }
+        .mainContainer div:first-child p{text-align: center;}
 
         .main__subtitle {
             color: var(--color-text-secondary);
@@ -33,9 +25,9 @@
         }
 
         /* segunda seccion */
-        .main__container:nth-of-type(2) {color: var(--color-primary);}
+        .mainContainer:nth-of-type(2) {color: var(--color-primary);}
 
-        .main__container:nth-of-type(2) h1{
+        .mainContainer:nth-of-type(2) h1{
             text-align: center;
             font-size: 2.5rem;
         }
