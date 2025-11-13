@@ -8,6 +8,8 @@
 .exercise-carousel {
   width: min(900px, 100%);
   margin: 0 auto;
+  position: relative;
+  padding: 0 3.5rem;
 }
 
 /* ============================================
@@ -236,21 +238,22 @@
    ============================================ */
 
 .exercise-carousel__controls {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
-  margin-top: 1.5rem;
 }
 
 .exercise-carousel__button {
-  flex: 1;
-  padding: 0.875rem 0;
-  background-color: #f5f5f5;
+  padding: 0.5rem;
+  border: none;
+  background-color: var(--color-primary);
   color: #333;
-  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 2rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -280,9 +283,6 @@
    ============================================ */
 
 @media (max-width: 768px) {
-  .exercise-carousel {
-    padding: 1.5rem;
-  }
 
   .exercise-carousel__title {
     font-size: 1.25rem;
@@ -305,11 +305,19 @@
     font-size: 0.875rem;
   }
 
+}
+
+@media screen and (width <= 570px) {
+  .exercise-carousel{padding: 0;}
+
   .exercise-carousel__controls {
-    flex-direction: column;
+    position: unset;
+    transform: translateY(0);
+    gap: 1.5rem;
   }
 
-  .exercise-carousel__button {
-    width: 100%;
+  .exercise-carousel__button{
+    flex: 1;
   }
+
 }

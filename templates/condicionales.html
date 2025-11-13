@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/prism.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/carrusel.css')}}">
+<link href='https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css' rel='stylesheet'>
 {% extends "base.html" %}
 
 {% block contenido %}
@@ -98,11 +99,11 @@ default:
                     <div class="exercise-carousel__code-container">
                         <pre class="exercise-carousel__code language-java"><code class="line-numbers">public class Calculadora {
 public static void main(String[] args) {
-    int numero1 = 10;
-    int numero2 = 0;
-    int resultado = numero1 / numero2;
-    System.out.println("Resultado: " + resultado);
-    String mensaje = "El calculo esta completo"
+        int numero1 = 10;
+        int numero2 = 0;
+        int resultado = numero1 / numero2;
+        System.out.println("Resultado: " + resultado);
+        String mensaje = "El calculo esta completo"
     }
 }</code></pre>
                     </div>
@@ -132,11 +133,11 @@ public static void main(String[] args) {
 
                 <!-- CONTROLES DE NAVEGACIÓN -->
                 <div class="exercise-carousel__controls">
-                    <button type="button" class="exercise-carousel__button exercise-carousel__button--prev" disabled>
-                        ← Anterior
+                    <button type="button" class="exercise-carousel__button exercise-carousel__button--prev" disabled title="Regresar">
+                        <i class='bxr  bx-arrow-left-stroke'  style='color:#000000'  ></i> 
                     </button>
-                    <button type="button" class="exercise-carousel__button exercise-carousel__button--next" disabled>
-                        Siguiente →
+                    <button type="button" class="exercise-carousel__button exercise-carousel__button--next" disabled title="Avanzar">
+                        <i class='bxr  bx-arrow-right-stroke'  style='color:#000000'  ></i> 
                     </button>
                 </div>
 
