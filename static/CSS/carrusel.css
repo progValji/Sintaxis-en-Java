@@ -1,0 +1,315 @@
+/* ============================================
+   CARRUSEL DE EJERCICIOS
+   ============================================ */
+
+.mainContainer:nth-of-type(2){padding: 0;}
+
+/* Contenedor principal del carrusel */
+.exercise-carousel {
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+/* ============================================
+   BARRA DE PROGRESO
+   ============================================ */
+
+.mainContainer .exercise-carousel .exercise-carousel__progress {margin-bottom: 1rem;}
+
+.exercise-carousel__progress-text {
+  display: block;
+  font-size: 0.875rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-carousel__current,
+.exercise-carousel__total {color: #f2f2f2;}
+
+.exercise-carousel__progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.exercise-carousel__progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
+/* ============================================
+   SLIDE DEL EJERCICIO
+   ============================================ */
+
+.exercise-carousel__slide {
+  display: none;
+}
+
+.exercise-carousel__slide--active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ============================================
+   INSTRUCCIONES
+   ============================================ */
+
+.exercise-carousel__instructions {
+  margin-bottom: 1.5rem;
+}
+
+.exercise-carousel__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   CONTENEDOR DE CÓDIGO
+   ============================================ */
+
+.exercise-carousel__code-container {
+  margin-bottom: 1.5rem;
+}
+
+
+/* ============================================
+   OPCIONES (FORMULARIO)
+   ============================================ */
+
+.exercise-carousel__options {
+  margin-bottom: 1.5rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.exercise-carousel__option {
+  flex: 1 1 100px;
+  max-width: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.exercise-carousel__option:hover {
+  background-color: var(--color-accent);
+  & label{color: black; font-weight: bold;}
+}
+
+/* Checkbox y Radio */
+.exercise-carousel__checkbox,
+.exercise-carousel__radio {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* Label */
+/* .exercise-carousel__label {
+} */
+
+/* Estado seleccionado */
+.exercise-carousel__option:has(input:checked) {
+  background-color: var(--color-accent);
+  & label{color: black; font-weight: bold;}
+}
+
+/* Opciones con radio buttons (para fragmentos de código) */
+.exercise-carousel__option--radio {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.exercise-carousel__option--radio .exercise-carousel__radio {
+  margin-bottom: 0.5rem;
+}
+
+.exercise-carousel__code-option {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.exercise-carousel__code-option code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   BOTÓN VERIFICAR
+   ============================================ */
+
+.exercise-carousel__verify {
+  width: 100%;
+  padding: 0.875rem 0;
+  background-color: #1976d2;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  & span{position: relative; z-index: 10;}
+
+  &::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 0%;
+    border-radius: 4px;
+    background-color: var(--color-accent);
+    transition: width .5s;
+  }
+
+  &:hover{
+    &::after{width: 100%;}
+  }
+}
+
+.exercise-carousel__verify:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   FEEDBACK
+   ============================================ */
+
+.exercise-carousel__feedback {
+  padding: 1rem;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.exercise-carousel__feedback--visible {
+  display: block;
+}
+
+.exercise-carousel__feedback--success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.exercise-carousel__feedback--error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+/* ============================================
+   CONTROLES DE NAVEGACIÓN
+   ============================================ */
+
+.exercise-carousel__controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.exercise-carousel__button {
+  flex: 1;
+  padding: 0.875rem 0;
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exercise-carousel__button:hover:not(:disabled) {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.exercise-carousel__button:disabled {
+  background-color: #f9f9f9;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.exercise-carousel__button--prev {
+  /* Estilos específicos para el botón anterior si los necesitas */
+}
+
+.exercise-carousel__button--next {
+  /* Estilos específicos para el botón siguiente si los necesitas */
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .exercise-carousel {
+    padding: 1.5rem;
+  }
+
+  .exercise-carousel__title {
+    font-size: 1.25rem;
+  }
+
+  .exercise-carousel__description {
+    font-size: 0.9375rem;
+  }
+
+  .exercise-carousel__code {
+    font-size: 0.8125rem;
+    padding: 0.75rem;
+  }
+
+  .exercise-carousel__option {
+    padding: 0.625rem;
+  }
+
+  .exercise-carousel__label {
+    font-size: 0.875rem;
+  }
+
+  .exercise-carousel__controls {
+    flex-direction: column;
+  }
+
+  .exercise-carousel__button {
+    width: 100%;
+  }
+}
