@@ -1,0 +1,70 @@
+ejercicios:
+  - id: 1
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] a = {1,2,3};
+          System.out.println(a[3]);
+        }
+      }
+    pregunta: "¿Compila? ¿Qué pasa en tiempo de ejecución?"
+    opciones:
+      - "Compila y lanza ArrayIndexOutOfBoundsException"
+      - "No compila"
+      - "Compila e imprime 0"
+      - "Compila e imprime 3"
+    respuesta: "Compila y lanza ArrayIndexOutOfBoundsException"
+    explicacion: "Índice 3 fuera de límites (0-2)."  
+  - id: 2
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] a;
+          a[0] = 1;
+          System.out.println(a[0]);
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "Sí"
+      - "No"
+    respuesta: "No"
+    explicacion: "a no fue inicializado antes de usar."  
+  - id: 3
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] a = new int[2];
+          a[0] = 1;
+          a[1] = 2;
+          System.out.println(a[2]);
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "Sí, excepción en ejecución"
+      - "No"
+    respuesta: "Sí, excepción en ejecución"
+    explicacion: "Acceso inválido a índice 2."  
+  - id: 4
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] a = {1,2,3};
+          for (int i = 0; i <= a.length; i++) {
+            System.out.println(a[i]);
+          }
+        }
+      }
+    pregunta: "¿Compila? ¿Qué problema hay?"
+    opciones:
+      - "Compila y lanza ArrayIndexOutOfBoundsException"
+      - "Compila e imprime 1 2 3"
+      - "No compila"
+      - "Compila pero no imprime"
+    respuesta: "Compila y lanza ArrayIndexOutOfBoundsException"
+    explicacion: "Bucle <= causa acceso fuera del array." 

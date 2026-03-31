@@ -4,7 +4,7 @@ import yaml
 app = Flask(__name__)
 
 def load_data(filename):
-    with open(f'static/data/{filename}.yml', encoding='utf-8') as f:
+    with open(f'data/{filename}/{filename}.yml', encoding='utf-8') as f:
         return yaml.safe_load(f)
 
 @app.route("/")

@@ -1,0 +1,42 @@
+ejercicios:
+  - id: 1
+    categoria: fill in the blank
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] a = {1, 2, 3};
+          int suma = 0;
+          for (int i = 0; i < a.___; i++) {
+            suma += a[i];
+          }
+          System.out.println(suma);
+        }
+      }
+    pregunta: "¿Qué completa para que sume todo el arreglo?"
+    opciones:
+      - "length"
+      - "size"
+      - "count"
+      - "leng"
+    respuesta: "length"
+    explicacion: "Uso correcto en arreglos Java es a.length."  
+  - id: 2
+    categoria: fill in the blank
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          String[] s = new String[3];
+          s[0] = "A";
+          s[1] = "B";
+          s[2] = "C";
+          System.out.println(s[___]);
+        }
+      }
+    pregunta: "¿Cuál índice para imprimir 'C'?"
+    opciones:
+      - "2"
+      - "3"
+      - "1"
+      - "0"
+    respuesta: "2"
+    explicacion: "C está en posición 2."  

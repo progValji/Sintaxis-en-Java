@@ -1,0 +1,72 @@
+ejercicios:
+  - id: 1
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] arr = {1, 2, 3};
+          System.out.println(arr[1]);
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "1"
+      - "2"
+      - "3"
+      - "Error"
+    respuesta: "2"
+    explicacion: "arr[1] es el segundo elemento."  
+  - id: 2
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          String[] s = new String[2];
+          s[0] = "hola";
+          System.out.println(s[1]);
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "hola"
+      - "null"
+      - "error"
+      - ""
+    respuesta: "null"
+    explicacion: "s[1] no fue inicializado y es null."  
+  - id: 3
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] x = {5, 10, 15};
+          System.out.println(x.length);
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "2"
+      - "3"
+      - "5"
+      - "0"
+    respuesta: "3"
+    explicacion: "Longitud de arr es 3."  
+  - id: 4
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int[] v = {10, 20};
+          for (int i = 0; i < v.length; i++) {
+            System.out.print(v[i] + " ");
+          }
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "10 20 "
+      - "1020"
+      - "20 10 "
+      - "error"
+    respuesta: "10 20 "
+    explicacion: "Recorre el arreglo en orden."  

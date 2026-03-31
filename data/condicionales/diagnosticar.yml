@@ -1,0 +1,73 @@
+ejercicios:
+  - id: 1
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int x = 10;
+          if (x > 5)
+            System.out.println("mayor");
+          } // error: llave extra
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "Sí"
+      - "No"
+    respuesta: "No"
+    explicacion: "Llave de cierre de if mal emparejada."  
+  - id: 2
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int x = 5;
+          if (x > 5) {
+            System.out.println("mayor");
+          } else if (x < 5) {
+            System.out.println("menor");
+          }
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "Sí"
+      - "No"
+    respuesta: "Sí"
+    explicacion: "Estructura válida, a pesar de no tener else final."  
+  - id: 3
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int x = "10"; // error tipo
+          if (x > 5) {
+            System.out.println("mayor");
+          }
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "Sí"
+      - "No"
+    respuesta: "No"
+    explicacion: "Asignación string a int."  
+  - id: 4
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          boolean b = false;
+          if (b = true) {
+            System.out.println("si");
+          }
+        }
+      }
+    pregunta: "¿Compila y qué imprime?"
+    opciones:
+      - "No compila"
+      - "Sí, imprime si"
+      - "Sí, imprime nada"
+      - "Sí, error lógico"
+    respuesta: "Sí, imprime si"
+    explicacion: "Asignación en condición true, compila pero bug lógico."  

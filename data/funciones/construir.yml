@@ -1,0 +1,41 @@
+ejercicios:
+  - id: 1
+    categoria: fill in the blank
+    codigo: |
+      public class Main {
+        static void incrementa(int[] arr) {
+          for (int i = 0; i < arr.length; i++) {
+            arr[i] += ___;
+          }
+        }
+        public static void main(String[] args) {
+          int[] a = {0,0};
+          incrementa(a);
+          System.out.println(a[1]);
+        }
+      }
+    pregunta: "¿Qué valor sumar para imprimir 3?"
+    opciones:
+      - "3"
+      - "2"
+      - "1"
+      - "0"
+    respuesta: "3"
+    explicacion: "a[1] = 0 + 3."  
+  - id: 2
+    categoria: fill in the blank
+    codigo: |
+      public class Main {
+        static int f(int x) { return x<0 ? -x : x; }
+        public static void main(String[] args) {
+          System.out.println(f(___));
+        }
+      }
+    pregunta: "¿Qué colocar para imprimir 7?"
+    opciones:
+      - "-7"
+      - "7"
+      - "0"
+      - "1"
+    respuesta: "-7"
+    explicacion: "Valor absoluto de -7 es 7."

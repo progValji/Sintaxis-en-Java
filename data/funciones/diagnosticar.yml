@@ -1,0 +1,71 @@
+ejercicios:
+  - id: 1
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        static int suma(int a, int b) {
+          return a + b;
+        }
+        public static void main(String[] args) {
+          System.out.println(suma(2));
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "No"
+      - "Sí"
+    respuesta: "No"
+    explicacion: "suma requiere dos argumentos, se llama con uno."  
+  - id: 2
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        static void x() {
+          return 1;
+        }
+        public static void main(String[] args) {
+          System.out.println(x());
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "No"
+      - "Sí"
+    respuesta: "No"
+    explicacion: "Método void no puede devolver valor."  
+  - id: 3
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        static int f() {
+          int a = 5;
+        }
+        public static void main(String[] args) {
+          System.out.println(f());
+        }
+      }
+    pregunta: "¿Compila?"
+    opciones:
+      - "No"
+      - "Sí"
+    respuesta: "No"
+    explicacion: "Método int necesita return."  
+  - id: 4
+    categoria: encuentra el bug
+    codigo: |
+      public class Main {
+        static int dividir(int a, int b) {
+          return a / b;
+        }
+        public static void main(String[] args) {
+          System.out.println(dividir(4,0));
+        }
+      }
+    pregunta: "¿Compila? ¿Qué ocurre en ejecución?"
+    opciones:
+      - "Compila, ArithmeticException"
+      - "No compila"
+      - "Compila e imprime 0"
+      - "Compila e imprime infinito"
+    respuesta: "Compila, ArithmeticException"
+    explicacion: "División por cero en int lanza excepción."  

@@ -1,0 +1,81 @@
+ejercicios:
+  - id: 1
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int x = 10;
+          if (x > 5) {
+            System.out.println("mayor");
+          }
+        }
+      }
+    pregunta: "¿Qué imprime este código?"
+    opciones:
+      - "mayor"
+      - "menor"
+      - "nada"
+      - "error"
+    respuesta: "mayor"
+    explicacion: "x vale 10, mayor que 5."  
+  - id: 2
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int x = 5;
+          if (x > 5) {
+            System.out.println("A");
+          } else if (x == 5) {
+            System.out.println("B");
+          } else {
+            System.out.println("C");
+          }
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "A"
+      - "B"
+      - "C"
+      - "Error"
+    respuesta: "B"
+    explicacion: "x es 5, se cumple else if."    
+  - id: 3
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          int n = 7;
+          if (n % 2 == 0) {
+            System.out.println("par");
+          } else {
+            System.out.println("impar");
+          }
+        }
+      }
+    pregunta: "¿Qué imprime si n=7?"
+    opciones:
+      - "par"
+      - "impar"
+      - "nada"
+      - "Error"
+    respuesta: "impar"
+    explicacion: "7 no es divisible por 2."  
+  - id: 4
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        public static void main(String[] args) {
+          boolean flag = true;
+          System.out.println(flag ? "si" : "no");
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "si"
+      - "no"
+      - "true"
+      - "false"
+    respuesta: "si"
+    explicacion: "operador ternario evalúa true."

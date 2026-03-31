@@ -12,5 +12,10 @@ El objetivo de esta aplicacion es pulir la forma de escribir codigo, no se enseÃ
 + Funciones
 + Strings
 
+## Categorias de ejercicios
+1. comprension de codigo: que imprime este codigo, cual es el valor de x
+2. encuentra el bug, Â¿compila o no compila?
+3. fill in the blank. (Los huecos deben ser de logica y no de sintaxis)
+
 ## Mejoras a futuro
 + Ejercicios de tipo codigo completo con error(s) oculto(s).

@@ -1,0 +1,78 @@
+ejercicios:
+  - id: 1
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        static int suma(int a, int b) {
+          return a + b;
+        }
+        public static void main(String[] args) {
+          System.out.println(suma(2, 3));
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "2"
+      - "3"
+      - "5"
+      - "error"
+    respuesta: "5"
+    explicacion: "suma(2,3) devuelve 5."  
+  - id: 2
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        static void printX() {
+          System.out.print("X");
+        }
+        public static void main(String[] args) {
+          printX();
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "X"
+      - "x"
+      - "null"
+      - "error"
+    respuesta: "X"
+    explicacion: "printX imprime X."  
+  - id: 3
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        static int f(int n) {
+          return n * 2;
+        }
+        public static void main(String[] args) {
+          System.out.println(f(4));
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "8"
+      - "4"
+      - "2"
+      - "error"
+    respuesta: "8"
+    explicacion: "4*2=8."  
+  - id: 4
+    categoria: comprension de codigo
+    codigo: |
+      public class Main {
+        static int factorial(int n) {
+          if (n <= 1) return 1;
+          return n * factorial(n-1);
+        }
+        public static void main(String[] args) {
+          System.out.println(factorial(3));
+        }
+      }
+    pregunta: "¿Qué imprime?"
+    opciones:
+      - "6"
+      - "3"
+      - "1"
+      - "error"
+    respuesta: "6"
+    explicacion: "3*2*1=6."  
