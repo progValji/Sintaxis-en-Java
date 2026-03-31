@@ -1,13 +1,17 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/prism.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/carrusel.css')}}">
 <link href='https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<style>
+    .main__title p{margin-bottom: 1rem;}
+    .main__title{ max-inline-size: 100ch; margin: 0 auto 2rem;}
+</style>
 {% extends "base.html" %}
 
 {% block contenido %}
     <main>
-        <section class="mainContainer container">
-            <div>
-                <h1 class="mainTitle neon">Estructuras Condicionales</h1>
+        <section class="main__container container">
+            <div class="main__title">
+                <h1 class="title neon">Estructuras Condicionales</h1>
     
                 <p class="fw-300">Las estructuras condicionales en programación son instrucciones que permiten tomar decisiones 
                 dentro de un programa. Su función principal es ejecutar <span class="fw-600 text-muted">diferentes bloques de código</span> según 
@@ -75,7 +79,7 @@ default:
             </div>
         </section>
 
-        <section class="mainContainer container">
+        <section class="main__container container">
             <article class="exercise-carousel">
                 <!-- BARRA DE PROGRESO -->
                 <div class="exercise-carousel__progress">
@@ -110,19 +114,19 @@ public static void main(String[] args) {
 
                     <form class="exercise-carousel__options">
                         <div class="exercise-carousel__option">
-                            <input type="radio" id="ex1-line1" name="errors" value="1" class="exercise-carousel__checkbox">
+                            <input type="checkbox" id="ex1-line1" name="errors" value="1" class="exercise-carousel__checkbox">
                             <label for="ex1-line1" class="exercise-carousel__label">Línea 1</label>
                         </div>
                         <div class="exercise-carousel__option">
-                            <input type="radio" id="ex1-line5" name="errors" value="5" class="exercise-carousel__checkbox">
+                            <input type="checkbox" id="ex1-line5" name="errors" value="5" class="exercise-carousel__checkbox">
                             <label for="ex1-line5" class="exercise-carousel__label">Línea 5</label>
                         </div>
                         <div class="exercise-carousel__option">
-                            <input type="radio" id="ex1-line6" name="errors" value="6" class="exercise-carousel__checkbox">
+                            <input type="checkbox" id="ex1-line6" name="errors" value="6" class="exercise-carousel__checkbox">
                             <label for="ex1-line6" class="exercise-carousel__label">Línea 6</label>
                         </div>
                         <div class="exercise-carousel__option">
-                            <input type="radio" id="ex1-line7" name="errors" value="7" class="exercise-carousel__checkbox">
+                            <input type="checkbox" id="ex1-line7" name="errors" value="7" class="exercise-carousel__checkbox">
                             <label for="ex1-line7" class="exercise-carousel__label">Línea 7</label>
                         </div>
                     </form>
@@ -146,4 +150,5 @@ public static void main(String[] args) {
     </main>
 
     <script src="{{ url_for('static', filename='JS/prism.js')}}"></script>
+    <script src="{{url_for('static', filename='JS/carrusel.js')}}"></script>
 {% endblock %}

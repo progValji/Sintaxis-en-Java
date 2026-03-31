@@ -2,7 +2,7 @@
    CARRUSEL DE EJERCICIOS
    ============================================ */
 
-.mainContainer:nth-of-type(2){padding: 0;}
+.main__container:nth-of-type(2){padding: 0;}
 
 /* Contenedor principal del carrusel */
 .exercise-carousel {
@@ -16,7 +16,7 @@
    BARRA DE PROGRESO
    ============================================ */
 
-.mainContainer .exercise-carousel .exercise-carousel__progress {margin-bottom: 1rem;}
+.main__container .exercise-carousel .exercise-carousel__progress {margin-bottom: 1rem;}
 
 .exercise-carousel__progress-text {
   display: block;

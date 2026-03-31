@@ -1,13 +1,11 @@
         /* primera seccion*/
-        .mainContainer div:first-child p{text-align: center;}
+        .main__title p{text-align: center;}
 
         .main__subtitle {
             color: var(--color-text-secondary);
-            font-size: 1.5rem;
-            @media (width <= 550px) {font-size: 1.2rem;}
         }
 
-        .main__intro {
+        .main__info {
             width: min(800px, 90%);
             margin: 0 auto;
             background: rgba(10, 77, 104, 0.3);
@@ -17,17 +15,17 @@
             box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1);
         }
 
-        .main__intro h2 {color: var(--color-primary);}
+        .main__info h2 {color: var(--color-primary);}
 
-        .main__intro p{
+        .main__info p{
             color: var(--color-text-secondary);
             &:first-of-type{margin: 1rem 0;}
         }
 
         /* segunda seccion */
-        .mainContainer:nth-of-type(2) {color: var(--color-primary);}
+        .main__container:nth-of-type(2) {color: var(--color-primary);}
 
-        .mainContainer:nth-of-type(2) h1{
+        .main__container:nth-of-type(2) h1{
             text-align: center;
             font-size: 2.5rem;
         }
