@@ -1,0 +1,42 @@
+- title: "1. if"
+  description: "La estructura más básica. Ejecuta un bloque de código si la condición es verdadera."
+  code: |
+    if(condicion){
+        // codigo si se cumple la condicion
+    }
+
+- title: "2. if else"
+  description: "Permite ejecutar un bloque si la condición es verdadera y otro si es falsa."
+  code: |
+    if(condicion){
+        // codigo si es verdadero
+    } else {
+        // codigo si es falso
+    }
+
+- title: "3. if else if"
+  description: "Permite evaluar múltiples condiciones en secuencia. Se ejecuta el primer bloque cuya 
+                condición sea verdadera."
+  code: |
+    if (condicion 1) {
+      // código si la condicion 1 es verdadera
+    } else if(condicion 2){
+        // código si la condicion 2 es verdadera
+    }else{
+        // codigo si ninguna de las anteriores condicionales no se cumplen
+    }
+
+- title: "4. switch"
+  description: "Útil cuando necesitas comparar una variable contra múltiples valores constantes. Es más 
+                legible que múltiples else if cuando se trata de comparaciones de igualdad."
+  code: |
+    switch(variable){
+        case valor1:
+            // codigo si variable es igual a valor1
+            break;
+        case valor2:
+            // codigo si variable es igual a valor2
+            break;
+        default:
+            // codigo si variable no coincide con ningun caso
+    }

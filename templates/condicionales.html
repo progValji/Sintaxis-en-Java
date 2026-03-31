@@ -6,6 +6,7 @@
     .main__title{ max-inline-size: 100ch; margin: 0 auto 2rem;}
 </style>
 {% extends "base.html" %}
+{% from "macros/_topic.html" import render_topic %}
 
 {% block contenido %}
     <main>
@@ -24,58 +25,9 @@
                 switch o else if (para múltiples alternativas).</p>
             </div>
             <div class="topics">
-                <article class="topic">
-                    <h1 class="topic__title italic">1. if</h1>
-                    <p class="topic__paragraph fw-300">La estructura más básica. Ejecuta un bloque de código si la condición es verdadera</p>
-                    <pre class="language-java"><code class="line-numbers">
-if(condicion){
-    // codigo si se cumple la condicion
-}</code></pre>
-                </article>
-                <article class="topic">
-                    <h1 class="topic__title italic">2. if else</h1>
-                    <p class="topic__paragraph fw-300">Esta estructura permite ejecutar un bloque de codigo si la condicion
-                        es verdadera y un caso para cuando sea falsa.
-                    </p>
-                    <pre class="language-java"><code class="line-numbers">
-if (condicion) {
-    // código si es verdadero
-} else {
-    // código si es falso
-}
-</code></pre>
-                </article>
-                <article class="topic">
-                    <h1 class="topic__title italic">3. else if</h1>
-                    <p class="topic__paragraph fw-300">Permite evaluar múltiples condiciones en secuencia. Se ejecuta el primer bloque cuya 
-                        condición sea verdadera.</p>
-                    <pre class="language-java"><code class="line-numbers">
-if (condicion 1) {
-    // código si la condicion 1 es verdadera
-} else if(condicion 2){
-    // código si la condicion 2 es verdadera
-}else{
-    // codigo si ninguna de las anteriores condicionales no se cumplen
-}
-</code></pre>
-                </article>
-                <article class="topic">
-                    <h1 class="topic__title italic">4. switch</h1>
-                    <p class="topic__paragraph fw-300">Útil cuando necesitas comparar una variable contra múltiples valores constantes. Es más 
-                        legible que múltiples else if cuando se trata de comparaciones de igualdad.</p>
-                    <pre class="language-java"><code class="line-numbers">
-switch (variable) {
-case valor1: 
-    // código
-    break; 
-case valor2: 
-    // código
-    break;
-default: 
-    // código por defecto 
-}
-</code></pre>
-                </article>
+                {% for topic in topics %}
+                    {{ render_topic(topic) }}
+                {% endfor %}
             </div>
         </section>
 

@@ -1,6 +1,11 @@
 from flask import Flask, render_template
+import yaml
 
 app = Flask(__name__)
+
+def load_data(filename):
+    with open(f'static/data/{filename}.yml', encoding='utf-8') as f:
+        return yaml.safe_load(f)
 
 @app.route("/")
 def index(): 
@@ -8,7 +13,7 @@ def index():
 
 @app.route("/condicionales")
 def condicionales():
-    return render_template('condicionales.html')
+    return render_template('condicionales.html', topics=load_data('condicionales'))
 
 @app.route("/ciclos")
 def ciclos():
