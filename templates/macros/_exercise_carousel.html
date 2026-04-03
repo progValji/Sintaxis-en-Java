@@ -17,7 +17,7 @@
         {# SLIDES #}
         {% for exercise in exercises %}
         <div class="exercise-carousel__slide {% if loop.first %}exercise-carousel__slide--active{% endif %}"
-             data-exercise="{{ loop.index }}">
+             data-exercise="{{ loop.index }}" data-respuesta="{{exercise.respuesta}}">
 
             <div class="exercise-carousel__instructions">
                 <span class="exercise-carousel__category">{{ exercise.categoria }}</span>
@@ -47,10 +47,9 @@
                 <span>Verificar respuesta</span>
             </button>
 
-            <div class="exercise-carousel__feedback"></div>
-
-            <div class="exercise-carousel__explanation exercise-carousel__explanation--hidden">
-                <p>{{ exercise.explanation }}</p>
+            <div class="exercise-carousel__feedback">
+                <p>{{ exercise.explicacion }}</p>
+                <p>¡Oh no! Vuleve a intentarlo</p>
             </div>
 
         </div>
