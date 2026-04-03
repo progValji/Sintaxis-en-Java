@@ -7,6 +7,7 @@
 </style>
 {% extends "base.html" %}
 {% from "macros/_topic.html" import render_topic %}
+{% from "macros/_exercise_carousel.html" import exercise_carousel %}
 
 {% block contenido %}
     <main>
@@ -31,76 +32,9 @@
             </div>
         </section>
 
-        <section class="main__container container">
-            <article class="exercise-carousel">
-                <!-- BARRA DE PROGRESO -->
-                <div class="exercise-carousel__progress">
-                    <span class="exercise-carousel__progress-text">
-                        Ejercicio <strong class="exercise-carousel__current">1</strong> de <strong class="exercise-carousel__total">5</strong>
-                    </span>
-                    <div class="exercise-carousel__progress-bar">
-                        <div class="exercise-carousel__progress-fill" style="width: 20%;"></div>
-                    </div>
-                </div>
+        {{ exercise_carousel(exercises) }}
 
-                <!-- SLIDE DEL EJERCICIO -->
-                <div class="exercise-carousel__slide exercise-carousel__slide--active" data-exercise="1">
-                    <div class="exercise-carousel__instructions">
-                        <h2 class="exercise-carousel__title fw-600">Encuentra los errores en el código</h2>
-                        <p class="exercise-carousel__description fw-300">
-                            Selecciona las líneas que contienen errores de sintaxis o lógica.
-                        </p>
-                    </div>
-
-                    <div class="exercise-carousel__code-container">
-                        <pre class="exercise-carousel__code language-java"><code class="line-numbers">public class Calculadora {
-public static void main(String[] args) {
-        int numero1 = 10;
-        int numero2 = 0;
-        int resultado = numero1 / numero2;
-        System.out.println("Resultado: " + resultado);
-        String mensaje = "El calculo esta completo"
-    }
-}</code></pre>
-                    </div>
-
-                    <form class="exercise-carousel__options">
-                        <div class="exercise-carousel__option">
-                            <input type="checkbox" id="ex1-line1" name="errors" value="1" class="exercise-carousel__checkbox">
-                            <label for="ex1-line1" class="exercise-carousel__label">Línea 1</label>
-                        </div>
-                        <div class="exercise-carousel__option">
-                            <input type="checkbox" id="ex1-line5" name="errors" value="5" class="exercise-carousel__checkbox">
-                            <label for="ex1-line5" class="exercise-carousel__label">Línea 5</label>
-                        </div>
-                        <div class="exercise-carousel__option">
-                            <input type="checkbox" id="ex1-line6" name="errors" value="6" class="exercise-carousel__checkbox">
-                            <label for="ex1-line6" class="exercise-carousel__label">Línea 6</label>
-                        </div>
-                        <div class="exercise-carousel__option">
-                            <input type="checkbox" id="ex1-line7" name="errors" value="7" class="exercise-carousel__checkbox">
-                            <label for="ex1-line7" class="exercise-carousel__label">Línea 7</label>
-                        </div>
-                    </form>
-
-                    <button type="button" class="exercise-carousel__verify" data-answer="5,7"><span>Verificar respuesta</span></button>
-                    <div class="exercise-carousel__feedback"></div>
-                </div>
-
-                <!-- CONTROLES DE NAVEGACIÓN -->
-                <div class="exercise-carousel__controls">
-                    <button type="button" class="exercise-carousel__button exercise-carousel__button--prev" disabled title="Regresar">
-                        <i class='bxr  bx-arrow-left-stroke'  style='color:#000000'  ></i> 
-                    </button>
-                    <button type="button" class="exercise-carousel__button exercise-carousel__button--next" disabled title="Avanzar">
-                        <i class='bxr  bx-arrow-right-stroke'  style='color:#000000'  ></i> 
-                    </button>
-                </div>
-
-            </article>
-        </section>
     </main>
 
     <script src="{{ url_for('static', filename='JS/prism.js')}}"></script>
-    <script src="{{url_for('static', filename='JS/carrusel.js')}}"></script>
 {% endblock %}

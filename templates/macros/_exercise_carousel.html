@@ -1,0 +1,84 @@
+{% macro exercise_carousel(exercises) %}
+<section class="main__container container">
+    <article class="exercise-carousel">
+
+        {# BARRA DE PROGRESO #}
+        <div class="exercise-carousel__progress">
+            <span class="exercise-carousel__progress-text">
+                Ejercicio <strong class="exercise-carousel__current">1</strong>
+                de <strong class="exercise-carousel__total">{{ exercises | length }}</strong>
+            </span>
+            <!-- <div class="exercise-carousel__progress-bar">
+                <div class="exercise-carousel__progress-fill">
+                </div>
+            </div> -->
+        </div>
+
+        {# SLIDES #}
+        {% for exercise in exercises %}
+        <div class="exercise-carousel__slide {% if loop.first %}exercise-carousel__slide--active{% endif %}"
+             data-exercise="{{ loop.index }}">
+
+            <div class="exercise-carousel__instructions">
+                <span class="exercise-carousel__category">{{ exercise.categoria }}</span>
+                <h2 class="exercise-carousel__title fw-600">{{ exercise.pregunta }}</h2>
+            </div>
+
+            <div class="exercise-carousel__code-container">
+                <pre class="exercise-carousel__code language-java"><code class="line-numbers">{{ exercise.codigo }}</code></pre>
+            </div>
+
+            <form class="exercise-carousel__options">
+                {% for option in exercise.opciones %}
+                <div class="exercise-carousel__option">
+                    <input
+                        type="checkbox"
+                        id="ex{{ loop.index }}-opt{{ loop.index }}"
+                        name="errors"
+                        value="{{ option.value }}"
+                        class="exercise-carousel__checkbox exercise-carousel__checkbox--{{ option.size }}"
+                    >
+                    <label
+                        for="ex{{ loop.index }}-opt{{ loop.index }}"
+                        class="exercise-carousel__label exercise-carousel__label--{{ option.size }}"
+                    >
+                        {{ option.label }}
+                    </label>
+                </div>
+                {% endfor %}
+            </form>
+
+            <button type="button"
+                    class="exercise-carousel__verify"
+                    data-exercise-id="{{ exercise.id }}">
+                <span>Verificar respuesta</span>
+            </button>
+
+            <div class="exercise-carousel__feedback"></div>
+
+            <div class="exercise-carousel__explanation exercise-carousel__explanation--hidden">
+                <p>{{ exercise.explanation }}</p>
+            </div>
+
+        </div>
+        {% endfor %}
+
+        {# CONTROLES #}
+        <div class="exercise-carousel__controls">
+            <button type="button"
+                    class="exercise-carousel__button exercise-carousel__button--prev"
+                    disabled
+                    title="Regresar">
+                <i class='bxr bx-arrow-left-stroke' style='color:#000000'></i>
+            </button>
+            <button type="button"
+                    class="exercise-carousel__button exercise-carousel__button--next"
+                    disabled
+                    title="Avanzar">
+                <i class='bxr bx-arrow-right-stroke' style='color:#000000'></i>
+            </button>
+        </div>
+
+    </article>
+</section>
+{% endmacro %}
