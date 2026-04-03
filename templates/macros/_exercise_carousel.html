@@ -8,10 +8,10 @@
                 Ejercicio <strong class="exercise-carousel__current">1</strong>
                 de <strong class="exercise-carousel__total">{{ exercises | length }}</strong>
             </span>
-            <!-- <div class="exercise-carousel__progress-bar">
+            <div class="exercise-carousel__progress-bar">
                 <div class="exercise-carousel__progress-fill">
                 </div>
-            </div> -->
+            </div>
         </div>
 
         {# SLIDES #}
@@ -29,22 +29,15 @@
             </div>
 
             <form class="exercise-carousel__options">
-                {% for option in exercise.opciones %}
-                <div class="exercise-carousel__option">
-                    <input
-                        type="checkbox"
-                        id="ex{{ loop.index }}-opt{{ loop.index }}"
-                        name="errors"
-                        value="{{ option.value }}"
-                        class="exercise-carousel__checkbox exercise-carousel__checkbox--{{ option.size }}"
-                    >
-                    <label
-                        for="ex{{ loop.index }}-opt{{ loop.index }}"
-                        class="exercise-carousel__label exercise-carousel__label--{{ option.size }}"
-                    >
-                        {{ option.label }}
+                {% for opcion in exercise.opciones %}
+                    <label class="exercise-carousel__option">
+                        <input type="radio" 
+                            class="exercise-carousel__checkbox"
+                            name="exercise{{ exercise.id }}" 
+                            value="{{ opcion }}">
+                        {{ opcion }}
                     </label>
-                </div>
+                    <br>
                 {% endfor %}
             </form>
 
@@ -67,15 +60,13 @@
         <div class="exercise-carousel__controls">
             <button type="button"
                     class="exercise-carousel__button exercise-carousel__button--prev"
-                    disabled
                     title="Regresar">
-                <i class='bxr bx-arrow-left-stroke' style='color:#000000'></i>
+                <i class='bxr bx-arrow-left-stroke'></i>
             </button>
             <button type="button"
                     class="exercise-carousel__button exercise-carousel__button--next"
-                    disabled
                     title="Avanzar">
-                <i class='bxr bx-arrow-right-stroke' style='color:#000000'></i>
+                <i class='bxr bx-arrow-right-stroke'></i>
             </button>
         </div>
 
