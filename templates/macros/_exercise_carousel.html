@@ -55,6 +55,17 @@
         </div>
         {% endfor %}
 
+        {# NAVEGACIÓN POR DOTS #}
+        <div class="exercise-carousel__dots">
+            {% for exercise in exercises %}
+            <button type="button"
+                    class="exercise-carousel__dot {% if loop.first %}exercise-carousel__dot--active{% endif %}"
+                    data-dot-index="{{ loop.index }}"
+                    title="Ir al ejercicio {{ loop.index }}">
+            </button>
+            {% endfor %}
+        </div>
+
         {# CONTROLES #}
         <div class="exercise-carousel__controls">
             <button type="button"

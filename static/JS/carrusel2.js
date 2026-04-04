@@ -71,10 +71,44 @@ function verificarEjercicioActual(){
     }
 }
 
+function irAEjercicio(numeroEjercicio) {
+    const slideActual = document.querySelector('.exercise-carousel__slide--active');
+    const slideDestino = document.querySelector(`[data-exercise="${numeroEjercicio}"]`);
+    
+    if (!slideDestino || numeroEjercicio === ejercicioActual) return;
+    
+    ejercicioActual = numeroEjercicio;
+    verificarEjercicioActual();
+    document.querySelector('.exercise-carousel__current').textContent = ejercicioActual;
+    actualizarBarraProgreso();
+    
+    // Actualizar dots
+    document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
+        dot.classList.remove('exercise-carousel__dot--active');
+    });
+    document.querySelector(`[data-dot-index="${numeroEjercicio}"]`).classList.add('exercise-carousel__dot--active');
+    
+    // Mover slide
+    slideActual.classList.add('exercise-carousel__slide--exit');
+    setTimeout(function(){
+        slideActual.classList.remove('exercise-carousel__slide--active', 'exercise-carousel__slide--exit');
+    }, 500);
+    setTimeout(function(){
+        slideDestino.classList.add('exercise-carousel__slide--active');
+    }, 500);
+}
+
 slideContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('exercise-carousel__verify')) {
         verificarRespuesta();
     }
+});
+
+document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
+    dot.addEventListener('click', function() {
+        const numeroEjercicio = parseInt(this.dataset.dotIndex);
+        irAEjercicio(numeroEjercicio);
+    });
 });
 
 btnNext.addEventListener('click', function(){
