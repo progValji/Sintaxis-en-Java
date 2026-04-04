@@ -221,11 +221,9 @@
   display: block;
 }
 
-/* .exercise-carousel__feedback--visible {
+.exercise-carousel__feedback--visible {
   display: block;
-} */
-
-.exercise-carousel__feedback p{display: none;}
+} 
 
 .exercise-carousel__feedback--success {
   background-color: #d4edda;

@@ -8,8 +8,16 @@ const btnNext = document.querySelector('.exercise-carousel__button--next');
 let ejercicioActual = 1
 const CANTIDAD_EJERCICIOS = 10
 
+function mostrarFeedback(feedback){
+    feedback.classList.add('exercise-carousel__feedback--visible')
+    setTimeout(() => {
+        feedback.classList.remove('exercise-carousel__feedback--visible')
+    }, 2000);
+}
+
 function verificarRespuesta() {
     const slideActivo = document.querySelector('.exercise-carousel__slide--active');
+    const feedback = slideActivo.querySelector('.exercise-carousel__feedback')
     if (!slideActivo) return;
 
     const form = slideActivo.querySelector('.exercise-carousel__options');
@@ -17,21 +25,20 @@ function verificarRespuesta() {
 
     const radioSeleccionado = form.querySelector('input[name^="exercise"]:checked');
     if (!radioSeleccionado) {
-        alert('Por favor, selecciona una opción.');
+        feedback.querySelector('p').textContent = 'Por favor selecciona una respuesta'
+        mostrarFeedback(feedback)
         return;
     }
 
     const respuestaUsuario = radioSeleccionado.value;
 
-    const feedback = slideActivo.querySelector('.exercise-carousel__feedback')
     if(respuestaUsuario === slideActivo.dataset.respuesta){
-        feedback.querySelector('p:last-of-type').style.display = 'none'
-        feedback.querySelector('p:first-of-type').style.display = 'block'
+        feedback.querySelector('p').textContent = slideActivo.dataset.explicacion
     }
     else{
-        feedback.querySelector('p:first-of-type').style.display = 'none'
-        feedback.querySelector('p:last-of-type').style.display = 'block'
+        feedback.querySelector('p').textContent = '¡Oh no!, vuelve a intentarlo'
     }
+    mostrarFeedback(feedback)
 }
 
 function moverSlide(sentido){
