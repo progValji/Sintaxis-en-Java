@@ -47,13 +47,13 @@
                     data-exercise-id="{{ exercise.id }}">
                 <span>Verificar respuesta</span>
             </button>
-
-            <div class="exercise-carousel__feedback">
-                <p></p>
-            </div>
-
         </div>
         {% endfor %}
+        <div class="exercise-carousel__feedback exercise-carousel__feedback--mostrar
+        exercise-carousel__feedback--success">
+            <p></p>
+            <button aria-label="Cerrar">X</button>
+        </div>
 
         {# NAVEGACIÓN POR DOTS #}
         <div class="exercise-carousel__dots">

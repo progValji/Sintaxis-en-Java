@@ -1,5 +1,3 @@
-const progressCurrent = document.querySelector('.exercise-carousel__current');
-const progressTotal = document.querySelector('.exercise-carousel__total');
 const progressFill = document.querySelector('.exercise-carousel__progress-fill');
 const slideContainer = document.querySelector('.exercise-carousel');
 const btnPrev = document.querySelector('.exercise-carousel__button--prev');
@@ -8,11 +6,9 @@ const btnNext = document.querySelector('.exercise-carousel__button--next');
 let ejercicioActual = 1
 const CANTIDAD_EJERCICIOS = 10
 
-function mostrarFeedback(feedback){
-    feedback.classList.add('exercise-carousel__feedback--visible')
-    setTimeout(() => {
-        feedback.classList.remove('exercise-carousel__feedback--visible')
-    }, 2000);
+function mostrarFeedback(feedback, categoria){
+    feedback.classList.add(`exercise-carousel__feedback--${categoria}`)
+    feedback.classList.add('exercise-carousel__feedback--mostrar')
 }
 
 function actualizarBarraProgreso() {
@@ -22,7 +18,7 @@ function actualizarBarraProgreso() {
 
 function verificarRespuesta() {
     const slideActivo = document.querySelector('.exercise-carousel__slide--active');
-    const feedback = slideActivo.querySelector('.exercise-carousel__feedback')
+    const feedback = slideContainer.querySelector('.exercise-carousel__feedback')
     if (!slideActivo) return;
 
     const form = slideActivo.querySelector('.exercise-carousel__options');
@@ -31,7 +27,7 @@ function verificarRespuesta() {
     const radioSeleccionado = form.querySelector('input[name^="exercise"]:checked');
     if (!radioSeleccionado) {
         feedback.querySelector('p').textContent = 'Por favor selecciona una respuesta'
-        mostrarFeedback(feedback)
+        mostrarFeedback(feedback, 'warning')
         return;
     }
 
@@ -71,6 +67,13 @@ function verificarEjercicioActual(){
     }
 }
 
+function actualizarDotActivo() {
+    document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
+        const index = parseInt(dot.dataset.dotIndex, 10);
+        dot.classList.toggle('exercise-carousel__dot--active', index === ejercicioActual);
+    });
+}
+
 function irAEjercicio(numeroEjercicio) {
     const slideActual = document.querySelector('.exercise-carousel__slide--active');
     const slideDestino = document.querySelector(`[data-exercise="${numeroEjercicio}"]`);
@@ -81,12 +84,7 @@ function irAEjercicio(numeroEjercicio) {
     verificarEjercicioActual();
     document.querySelector('.exercise-carousel__current').textContent = ejercicioActual;
     actualizarBarraProgreso();
-    
-    // Actualizar dots
-    document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
-        dot.classList.remove('exercise-carousel__dot--active');
-    });
-    document.querySelector(`[data-dot-index="${numeroEjercicio}"]`).classList.add('exercise-carousel__dot--active');
+    actualizarDotActivo()
     
     // Mover slide
     slideActual.classList.add('exercise-carousel__slide--exit');
@@ -116,6 +114,7 @@ btnNext.addEventListener('click', function(){
     verificarEjercicioActual()
     document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
     actualizarBarraProgreso()
+    actualizarDotActivo()
     moverSlide('next') 
 })
 
@@ -124,5 +123,6 @@ btnPrev.addEventListener('click', function(){
     verificarEjercicioActual()
     document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
     actualizarBarraProgreso()
+    actualizarDotActivo()
     moverSlide('prev') 
 })

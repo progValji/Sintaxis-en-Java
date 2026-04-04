@@ -10,13 +10,16 @@
   margin: 0 auto;
   position: relative;
   padding: 0 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 /* ============================================
    BARRA DE PROGRESO
    ============================================ */
 
-.main__container .exercise-carousel .exercise-carousel__progress {margin-bottom: 1rem;}
+.exercise-carousel__progress {order: 1;}
 
 .exercise-carousel__progress-text {
   display: block;
@@ -48,6 +51,7 @@
    ============================================ */
 
 .exercise-carousel__slide {
+  order: 2;
   display: none;
 }
 
@@ -83,7 +87,6 @@
 
 .exercise-carousel__instructions {
   margin-bottom: 1.5rem;
-  position: relative;
 }
 
 .exercise-carousel__title {
@@ -94,10 +97,6 @@
 }
 
 .exercise-carousel__category{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
   text-transform: capitalize;
   color: var(--color-text-secondary);
 }
@@ -215,27 +214,59 @@
    ============================================ */
 
 .exercise-carousel__feedback {
-  padding: 1rem;
-  border-radius: 4px;
-  font-size: 0.9375rem;
-  margin-bottom: 1rem;
-  display: block;
+  padding: .4rem 1.5rem;
+  border-radius:.7rem;
+  position: absolute;
+  top: 70px;
+  right:0;
+
+  display: flex;
+  gap: .8rem;
+
+  transform: translateX(20px);
+  opacity: 0;
+  transition: transform .5s, opacity .5s;
 }
 
-.exercise-carousel__feedback--visible {
-  display: block;
-} 
+.exercise-carousel__feedback--mostrar{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.exercise-carousel__feedback p{font-size: 1rem;}
+
+.exercise-carousel__feedback button{
+  cursor: pointer;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color .3s, transform .3s;
+}
+
+.exercise-carousel__feedback button:hover{
+  background: rgba(255, 224, 138, 0.15);
+  transform: scale(1.1);
+}
 
 .exercise-carousel__feedback--success {
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
-  color: #155724;
+  background-color: #1e4620;   /* verde oscuro */
+  border: 1px solid #2f7a35;
+  color: #a3e6a1;              /* verde claro */
 }
 
 .exercise-carousel__feedback--error {
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  color: #721c24;
+  background-color: #4a1c1c;   /* rojo oscuro */
+  border: 1px solid #a94442;
+  color: #f5b5b5;              /* rojo claro */
+}
+
+.exercise-carousel__feedback--warning {
+  background-color: #4d3b00;   /* amarillo oscuro */
+  border: 1px solid #b38f00;
+  color: #ffe08a;              /* amarillo claro */
 }
 
 /* ============================================
@@ -246,8 +277,7 @@
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  margin-bottom: 2rem;
-  margin-top: 1.5rem;
+  order: 3;
 }
 
 .exercise-carousel__dot {
@@ -344,6 +374,19 @@
     font-size: 0.875rem;
   }
 
+  .exercise-carousel__feedback{
+    order: 2;
+    position: relative;
+    top: 0;
+    width: fit-content;
+  }
+
+  /* .exercise-carousel__feedback p{order: 2;}
+  .exercise-carousel__feedback button{order: 1;} */
+
+  .exercise-carousel__slide{order: 3;}
+  .exercise-carousel__dots{order: 4;}
+
 }
 
 @media screen and (width <= 570px) {
@@ -353,6 +396,7 @@
     position: unset;
     transform: translateY(0);
     gap: 1.5rem;
+    order: 5;
   }
 
   .exercise-carousel__button{
