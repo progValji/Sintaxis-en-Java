@@ -15,6 +15,11 @@ function mostrarFeedback(feedback){
     }, 2000);
 }
 
+function actualizarBarraProgreso() {
+    const porcentaje = (ejercicioActual / CANTIDAD_EJERCICIOS) * 100;
+    progressFill.style.width = porcentaje + '%';
+}
+
 function verificarRespuesta() {
     const slideActivo = document.querySelector('.exercise-carousel__slide--active');
     const feedback = slideActivo.querySelector('.exercise-carousel__feedback')
@@ -75,11 +80,15 @@ slideContainer.addEventListener('click', (e) => {
 btnNext.addEventListener('click', function(){
     ejercicioActual++
     verificarEjercicioActual()
+    document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
+    actualizarBarraProgreso()
     moverSlide('next') 
 })
 
 btnPrev.addEventListener('click', function(){
     ejercicioActual--
     verificarEjercicioActual()
+    document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
+    actualizarBarraProgreso()
     moverSlide('prev') 
 })
