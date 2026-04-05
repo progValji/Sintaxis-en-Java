@@ -2,11 +2,29 @@ const progressFill = document.querySelector('.exercise-carousel__progress-fill')
 const slideContainer = document.querySelector('.exercise-carousel');
 const btnPrev = document.querySelector('.exercise-carousel__button--prev');
 const btnNext = document.querySelector('.exercise-carousel__button--next');
+const feedback = slideContainer.querySelector('.exercise-carousel__feedback')
 
 let ejercicioActual = 1
+let categoria = null
 const CANTIDAD_EJERCICIOS = 10
 
-function mostrarFeedback(feedback, categoria){
+async function comprobarFeedback(){
+    if(feedback.classList.contains('exercise-carousel__feedback--mostrar')){
+        await ocultarFeedback()
+    }
+}
+
+function ocultarFeedback(){
+    return new Promise(resolve => {
+        feedback.classList.remove('exercise-carousel__feedback--mostrar')
+        setTimeout(() => {
+            feedback.classList.remove(`exercise-carousel__feedback--${categoria}`)
+            resolve()
+        }, 500)
+    })
+}
+
+function mostrarFeedback(){
     feedback.classList.add(`exercise-carousel__feedback--${categoria}`)
     feedback.classList.add('exercise-carousel__feedback--mostrar')
 }
@@ -16,9 +34,8 @@ function actualizarBarraProgreso() {
     progressFill.style.width = porcentaje + '%';
 }
 
-function verificarRespuesta() {
+async function verificarRespuesta() {
     const slideActivo = document.querySelector('.exercise-carousel__slide--active');
-    const feedback = slideContainer.querySelector('.exercise-carousel__feedback')
     if (!slideActivo) return;
 
     const form = slideActivo.querySelector('.exercise-carousel__options');
@@ -27,19 +44,26 @@ function verificarRespuesta() {
     const radioSeleccionado = form.querySelector('input[name^="exercise"]:checked');
     if (!radioSeleccionado) {
         feedback.querySelector('p').textContent = 'Por favor selecciona una respuesta'
-        mostrarFeedback(feedback, 'warning')
+        categoria = 'warning'
+        await comprobarFeedback()
+        mostrarFeedback()
         return;
     }
 
     const respuestaUsuario = radioSeleccionado.value;
 
     if(respuestaUsuario === slideActivo.dataset.respuesta){
-        feedback.querySelector('p').textContent = slideActivo.dataset.explicacion
+        await comprobarFeedback()
+        categoria = 'success'
+        feedback.querySelector('p').textContent = '¡Bien hecho! '
+        feedback.querySelector('p').textContent += slideActivo.dataset.explicacion
     }
     else{
+        await comprobarFeedback()
+        categoria = 'error'
         feedback.querySelector('p').textContent = '¡Oh no!, vuelve a intentarlo'
     }
-    mostrarFeedback(feedback)
+    mostrarFeedback()
 }
 
 function moverSlide(sentido){
@@ -57,13 +81,17 @@ function moverSlide(sentido){
 }
 
 function verificarEjercicioActual(){
-    if(ejercicioActual >= CANTIDAD_EJERCICIOS)
+    if(ejercicioActual >= CANTIDAD_EJERCICIOS){
         btnNext.disabled = true
-    else if(ejercicioActual == 1)
-        btnPrev.disabled = true
-    else{
-        btnNext.disabled = false
         btnPrev.disabled = false
+    }
+    else if(ejercicioActual == 1){
+        btnPrev.disabled = true
+        btnNext.disabled = false
+    }
+    else{
+        btnPrev.disabled = false
+        btnNext.disabled = false
     }
 }
 
@@ -96,6 +124,10 @@ function irAEjercicio(numeroEjercicio) {
     }, 500);
 }
 
+feedback.querySelector('button').addEventListener('click', function(){
+    ocultarFeedback()
+})
+
 slideContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('exercise-carousel__verify')) {
         verificarRespuesta();
@@ -105,6 +137,7 @@ slideContainer.addEventListener('click', (e) => {
 document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
     dot.addEventListener('click', function() {
         const numeroEjercicio = parseInt(this.dataset.dotIndex);
+        comprobarFeedback()
         irAEjercicio(numeroEjercicio);
     });
 });
@@ -115,6 +148,7 @@ btnNext.addEventListener('click', function(){
     document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
     actualizarBarraProgreso()
     actualizarDotActivo()
+    comprobarFeedback()
     moverSlide('next') 
 })
 
@@ -124,5 +158,6 @@ btnPrev.addEventListener('click', function(){
     document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
     actualizarBarraProgreso()
     actualizarDotActivo()
+    comprobarFeedback()
     moverSlide('prev') 
 })
