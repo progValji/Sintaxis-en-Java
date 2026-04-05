@@ -1,0 +1,71 @@
+- title: "1. Declaración e inicialización"
+  description: "Una matriz es un array de dos dimensiones. Se puede pensar como una tabla
+                con filas y columnas. El primer índice representa la fila y el segundo
+                la columna."
+  code: |
+    // Declarar sin inicializar (3 filas, 3 columnas)
+    int[][] matriz = new int[3][3];
+
+    // Declarar e inicializar con valores
+    int[][] matriz = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+- title: "2. Acceder y modificar elementos"
+  description: "Se accede a cada elemento indicando su fila y columna. Los índices
+                comienzan en 0, por lo que la posición [0][0] es la esquina superior
+                izquierda."
+  code: |
+    int[][] matriz = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    System.out.println(matriz[0][0]); // 1
+    System.out.println(matriz[1][2]); // 6
+    System.out.println(matriz[2][1]); // 8
+
+    // Modificar un elemento
+    matriz[0][0] = 99;
+    System.out.println(matriz[0][0]); // 99
+
+- title: "3. Recorrer una matriz"
+  description: "Se utilizan dos ciclos for anidados: el externo para recorrer las filas
+                y el interno para recorrer las columnas de cada fila."
+  code: |
+    int[][] matriz = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    for (int i = 0; i < matriz.length; i++) {
+        for (int j = 0; j < matriz[i].length; j++) {
+            System.out.print(matriz[i][j] + "\t");
+        }
+        System.out.println();
+    }
+    // 1   2   3
+    // 4   5   6
+    // 7   8   9
+
+- title: "4. Recorrer con for-each"
+  description: "También es posible recorrer una matriz usando for-each anidados. El primer
+                nivel itera sobre cada fila (que es un array), y el segundo sobre cada
+                elemento de esa fila."
+  code: |
+    int[][] matriz = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    for (int[] fila : matriz) {
+        for (int elemento : fila) {
+            System.out.print(elemento + "\t");
+        }
+        System.out.println();
+    }

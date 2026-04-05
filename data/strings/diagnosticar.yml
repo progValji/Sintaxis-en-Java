@@ -1,0 +1,72 @@
+- id: 1
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "Hola";
+        System.out.println(s.charAt(4));
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, imprime a"
+    - "Sí, error en ejecución"
+    - "Sí, imprime Hola"
+  respuesta: "Sí, error en ejecución"
+  explicacion: "Índice fuera de rango, máximo es 3."
+
+- id: 2
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "Hola";
+        s[0] = 'h';
+      }
+    }
+  pregunta: "¿Compila?"
+  opciones:
+    - "Sí"
+    - "No"
+  respuesta: "No"
+  explicacion: "Los strings en Java son inmutables."
+
+- id: 3
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s1 = "Hola";
+        String s2 = "Hola";
+        if (s1 == s2) {
+          System.out.println("Iguales");
+        }
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, imprime Iguales"
+    - "Sí, no imprime nada"
+    - "Sí, error lógico"
+  respuesta: "Sí, imprime Iguales"
+  explicacion: "Apuntan al mismo objeto en el pool, aunque == no es la forma correcta."
+
+- id: 4
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = null;
+        System.out.println(s.length());
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, imprime 0"
+    - "Sí, error en ejecución"
+    - "Sí, imprime null"
+  respuesta: "Sí, error en ejecución"
+  explicacion: "NullPointerException al invocar método sobre null."

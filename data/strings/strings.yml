@@ -1,0 +1,118 @@
+- title: "1. Declaración e inicialización"
+  description: "En Java, String es una clase, no un tipo primitivo. Representa una cadena
+                de caracteres inmutable, es decir, una vez creada no puede modificarse
+                directamente."
+  code: |
+    // Forma literal (recomendada)
+    String saludo = "Hola, mundo";
+
+    // Usando el constructor
+    String saludo = new String("Hola, mundo");
+
+    System.out.println(saludo); // Hola, mundo
+
+- title: "2. Longitud de un String"
+  description: "El método length() devuelve el número de caracteres que contiene el String,
+                incluyendo espacios."
+  code: |
+    String texto = "Java es genial";
+
+    System.out.println(texto.length()); // 14
+
+- title: "3. Concatenación"
+  description: "Se pueden unir cadenas usando el operador + o el método concat(). Para
+                concatenaciones repetidas o dentro de ciclos, es más eficiente usar
+                StringBuilder."
+  code: |
+    String nombre = "Carlos";
+    String apellido = "López";
+
+    // Con operador +
+    String completo = nombre + " " + apellido;
+    System.out.println(completo); // Carlos López
+
+    // Con concat()
+    String completo2 = nombre.concat(" ").concat(apellido);
+    System.out.println(completo2); // Carlos López
+
+    // Con StringBuilder
+    StringBuilder sb = new StringBuilder();
+    sb.append(nombre).append(" ").append(apellido);
+    System.out.println(sb.toString()); // Carlos López
+
+- title: "4. Comparar Strings"
+  description: "Para comparar el contenido de dos Strings se usa equals() o
+                equalsIgnoreCase(). El operador == compara referencias, no contenido,
+                por lo que puede dar resultados inesperados."
+  code: |
+    String a = "hola";
+    String b = "HOLA";
+
+    System.out.println(a.equals(b));             // false
+    System.out.println(a.equalsIgnoreCase(b));   // true
+
+- title: "5. Métodos de búsqueda"
+  description: "Java ofrece varios métodos para buscar caracteres o subcadenas dentro
+                de un String. Devuelven el índice de la primera coincidencia o -1 si
+                no se encuentra."
+  code: |
+    String texto = "Hola, mundo";
+
+    System.out.println(texto.contains("mundo"));  // true
+    System.out.println(texto.indexOf("mundo"));   // 6
+    System.out.println(texto.startsWith("Hola")); // true
+    System.out.println(texto.endsWith("mundo"));  // true
+
+- title: "6. Transformaciones"
+  description: "Los métodos de transformación devuelven un nuevo String con los cambios
+                aplicados, ya que los Strings en Java son inmutables."
+  code: |
+    String texto = "  Hola Mundo  ";
+
+    System.out.println(texto.toUpperCase());  // "  HOLA MUNDO  "
+    System.out.println(texto.toLowerCase());  // "  hola mundo  "
+    System.out.println(texto.trim());         // "Hola Mundo"
+    System.out.println(texto.replace("Mundo", "Java")); // "  Hola Java  "
+
+- title: "7. Extraer subcadenas"
+  description: "El método substring() permite obtener una porción del String. Se indica
+                el índice de inicio (inclusivo) y opcionalmente el índice de fin
+                (exclusivo)."
+  code: |
+    String texto = "Hola, mundo";
+
+    System.out.println(texto.substring(6));     // mundo
+    System.out.println(texto.substring(0, 4)); // Hola
+
+- title: "8. Dividir un String"
+  description: "El método split() divide un String en un array de Strings usando un
+                delimitador. Es muy útil para procesar datos separados por comas,
+                espacios u otros caracteres."
+  code: |
+    String datos = "Java,Python,C++,JavaScript";
+
+    String[] lenguajes = datos.split(",");
+
+    for (String lenguaje : lenguajes) {
+        System.out.println(lenguaje);
+    }
+    // Java
+    // Python
+    // C++
+    // JavaScript
+
+- title: "9. Convertir entre String y números"
+  description: "Java permite convertir Strings a números y viceversa usando métodos
+                de las clases envolventes como Integer, Double, entre otras."
+  code: |
+    // String a número
+    String numeroTexto = "42";
+    int numero = Integer.parseInt(numeroTexto);
+    double decimal = Double.parseDouble("3.14");
+
+    System.out.println(numero + 8);   // 50
+    System.out.println(decimal + 1);  // 4.140000000000001
+
+    // Número a String
+    String resultado = String.valueOf(numero);
+    System.out.println(resultado);    // "42"

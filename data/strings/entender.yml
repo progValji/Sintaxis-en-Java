@@ -1,0 +1,74 @@
+- id: 1
+  categoria: comprension de codigo
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "Hola";
+        System.out.println(s.length());
+      }
+    }
+  pregunta: "¿Qué imprime este código?"
+  opciones:
+    - "3"
+    - "4"
+    - "5"
+    - "Error"
+  respuesta: "4"
+  explicacion: "La palabra 'Hola' tiene 4 caracteres."
+
+- id: 2
+  categoria: comprension de codigo
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "Java";
+        System.out.println(s.charAt(2));
+      }
+    }
+  pregunta: "¿Qué imprime?"
+  opciones:
+    - "J"
+    - "a"
+    - "v"
+    - "Error"
+  respuesta: "v"
+  explicacion: "Los índices empiezan en 0: J(0), a(1), v(2)."
+
+- id: 3
+  categoria: comprension de codigo
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s1 = "Hola";
+        String s2 = "Mundo";
+        System.out.println(s1 + " " + s2);
+      }
+    }
+  pregunta: "¿Qué imprime?"
+  opciones:
+    - "HolaMundo"
+    - "Hola Mundo"
+    - "Mundo Hola"
+    - "Error"
+  respuesta: "Hola Mundo"
+  explicacion: "Se concatenan los strings con un espacio entre ellos."
+
+- id: 4
+  categoria: comprension de codigo
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "abc";
+        for (int i = 0; i < s.length(); i++) {
+          System.out.print(s.charAt(i));
+        }
+      }
+    }
+  pregunta: "¿Qué imprime?"
+  opciones:
+    - "abc"
+    - "cba"
+    - "aabbcc"
+    - "Error"
+  respuesta: "abc"
+  explicacion: "Recorre el string desde el inicio hasta el final."

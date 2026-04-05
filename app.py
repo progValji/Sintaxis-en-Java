@@ -32,7 +32,9 @@ def condicionales():
 
 @app.route("/ciclos")
 def ciclos():
-    return 'Ciclos'
+    return render_template('ciclos.html',
+                           topics=load_data('ciclos', 'ciclos.yml'),
+                           exercises=get_all_exercises('ciclos'))
 
 @app.route("/arrays")
 def arrays():
@@ -42,7 +44,9 @@ def arrays():
 
 @app.route("/matrinces")
 def matrices():
-    return 'Matrices'
+    return render_template('matrinces.html',
+                           topics=load_data('matrices', 'matrices.yml'),
+                           exercises=get_all_exercises('matrices'))
 
 @app.route("/funciones")
 def funciones():
@@ -52,7 +56,9 @@ def funciones():
 
 @app.route("/strings")
 def strings():
-    return 'Strings'
+    return render_template('strings.html',
+                           topics=load_data('strings', 'strings.yml'),
+                           exercises=get_all_exercises('strings'))
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

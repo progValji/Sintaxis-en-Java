@@ -1,0 +1,76 @@
+- id: 1
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int[][] m = new int[2][2];
+        System.out.println(m[2][1]);
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, imprime 0"
+    - "Sí, error en ejecución"
+    - "Sí, imprime 2"
+  respuesta: "Sí, error en ejecución"
+  explicacion: "Índice fuera de rango, máximo índice es 1."
+
+- id: 2
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int[][] m = {
+          {1, 2},
+          {3, 4}
+        };
+        System.out.println(m[1,1]);
+      }
+    }
+  pregunta: "¿Compila?"
+  opciones:
+    - "Sí"
+    - "No"
+  respuesta: "No"
+  explicacion: "Acceso incorrecto, debe ser m[1][1]."
+
+- id: 3
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int[][] m = new int[2][];
+        m[0][0] = 5;
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, imprime 5"
+    - "Sí, error en ejecución"
+    - "Sí, no hace nada"
+  respuesta: "Sí, error en ejecución"
+  explicacion: "m[0] no está inicializado (null)."
+
+- id: 4
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int[][] m = new int[2][2];
+        for (int i = 0; i <= 2; i++) {
+          for (int j = 0; j <= 2; j++) {
+            m[i][j] = i + j;
+          }
+        }
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, funciona correctamente"
+    - "Sí, error en ejecución"
+    - "Sí, imprime valores"
+  respuesta: "Sí, error en ejecución"
+  explicacion: "Se accede a índices fuera de rango (máximo 1)."

@@ -1,0 +1,35 @@
+- id: 1
+  categoria: fill in the blank
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "Hola";
+        System.out.println(s.___());
+      }
+    }
+  pregunta: "Completa para imprimir la longitud del string"
+  opciones:
+    - "size"
+    - "length"
+    - "len"
+    - "count"
+  respuesta: "length"
+  explicacion: "El método correcto en Java es length()."
+
+- id: 2
+  categoria: fill in the blank
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        String s = "Java";
+        System.out.println(s.charAt(___));
+      }
+    }
+  pregunta: "Completa para imprimir 'v'"
+  opciones:
+    - "1"
+    - "2"
+    - "3"
+    - "0"
+  respuesta: "2"
+  explicacion: "Índices: J(0), a(1), v(2)."

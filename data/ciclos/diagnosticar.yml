@@ -1,0 +1,72 @@
+- id: 1
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        for (int i = 0; i < 5; i--)
+          System.out.println(i);
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, ciclo infinito"
+    - "Sí, imprime 0 a 4"
+    - "Sí, no imprime nada"
+  respuesta: "Sí, ciclo infinito"
+  explicacion: "i se decrementa, nunca deja de cumplir i < 5."
+
+- id: 2
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int i = 0;
+        while (i < 3)
+          System.out.println(i);
+          i++;
+      }
+    }
+  pregunta: "¿Compila y qué sucede?"
+  opciones:
+    - "No compila"
+    - "Sí, imprime 0 1 2"
+    - "Sí, ciclo infinito"
+    - "Sí, imprime solo 0"
+  respuesta: "Sí, ciclo infinito"
+  explicacion: "Faltan llaves, i++ queda fuera del while."
+
+- id: 3
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        for (int i = 0; i <= 5; i++) {
+          System.out.println(i)
+        }
+      }
+    }
+  pregunta: "¿Compila?"
+  opciones:
+    - "Sí"
+    - "No"
+  respuesta: "No"
+  explicacion: "Falta punto y coma después de println."
+
+- id: 4
+  categoria: encuentra el bug
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int i = 0;
+        do {
+          System.out.println(i);
+        } while i < 3;
+      }
+    }
+  pregunta: "¿Compila?"
+  opciones:
+    - "Sí"
+    - "No"
+  respuesta: "No"
+  explicacion: "Condición del while en do-while debe ir entre paréntesis."

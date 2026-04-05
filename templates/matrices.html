@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/prism.css')}}">
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/carrusel.css')}}">
+<link href='https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css' rel='stylesheet'>
+<style>
+    .main__title p{margin-bottom: 1rem;}
+    .main__title{ max-inline-size: 100ch; margin: 0 auto 2rem;}
+</style>
+{% extends "base.html" %}
+{% from "macros/_topic.html" import render_topic %}
+{% from "macros/_exercise_carousel.html" import exercise_carousel %}
+
+{% block contenido %}
+    <main>
+        <section class="main__container container">
+            <div class="main__title">
+                <h1 class="title neon">Matrices</h1>
+    
+                <p class="fw-300"></p>
+    
+                <p class="fw-300"></p>
+            </div>
+            <div class="topics">
+                {% for topic in topics %}
+                    {{ render_topic(topic) }}
+                {% endfor %}
+            </div>
+        </section>
+
+        {{ exercise_carousel(exercises) }}
+
+    </main>
+
+    <script src="{{ url_for('static', filename='JS/prism.js')}}"></script>
+    <script src="{{ url_for('static', filename='JS/carrusel.js') }}"></script>
+{% endblock %}

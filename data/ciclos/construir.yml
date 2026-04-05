@@ -1,0 +1,39 @@
+- id: 1
+  categoria: fill in the blank
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        for (int i = 0; i < ___; i++) {
+          System.out.print(i);
+        }
+      }
+    }
+  pregunta: "Completa para que imprima 012"
+  opciones:
+    - "2"
+    - "3"
+    - "4"
+    - "1"
+  respuesta: "3"
+  explicacion: "El ciclo debe ejecutarse hasta i < 3."
+
+- id: 2
+  categoria: fill in the blank
+  codigo: |
+    public class Main {
+      public static void main(String[] args) {
+        int i = 1;
+        while (i <= 3) {
+          System.out.print(i);
+          ___;
+        }
+      }
+    }
+  pregunta: "Completa para evitar ciclo infinito"
+  opciones:
+    - "i--"
+    - "i++"
+    - "i = 0"
+    - "break"
+  respuesta: "i++"
+  explicacion: "Se debe incrementar i para que la condición deje de cumplirse."
