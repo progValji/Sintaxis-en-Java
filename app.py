@@ -36,7 +36,9 @@ def ciclos():
 
 @app.route("/arrays")
 def arrays():
-    return 'Arrays'
+    return render_template('arrays.html',
+                           topics=load_data('arrays', 'arrays.yml'),
+                           exercises=get_all_exercises('arrays'))
 
 @app.route("/matrinces")
 def matrices():
@@ -44,7 +46,9 @@ def matrices():
 
 @app.route("/funciones")
 def funciones():
-    return 'Funciones'
+    return render_template('funciones.html',
+                           topics=load_data('funciones', 'funciones.yml'),
+                           exercises=get_all_exercises('funciones'))
 
 @app.route("/strings")
 def strings():

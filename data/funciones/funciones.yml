@@ -1,0 +1,114 @@
+- title: "1. Definición de un método"
+  description: "En Java, las funciones se llaman métodos y deben estar dentro de una clase.
+                Se definen con un modificador de acceso, el tipo de retorno, el nombre y
+                los parámetros entre paréntesis."
+  code: |
+    public class Ejemplo {
+
+        // Método sin retorno y sin parámetros
+        static void saludar() {
+            System.out.println("¡Hola!");
+        }
+
+        public static void main(String[] args) {
+            saludar(); // ¡Hola!
+        }
+    }
+
+- title: "2. Método con parámetros"
+  description: "Los parámetros permiten pasar información al método para que trabaje con ella.
+                Se definen indicando el tipo y el nombre dentro de los paréntesis."
+  code: |
+    public class Ejemplo {
+
+        static void saludar(String nombre) {
+            System.out.println("¡Hola, " + nombre + "!");
+        }
+
+        public static void main(String[] args) {
+            saludar("Carlos"); // ¡Hola, Carlos!
+            saludar("Ana");    // ¡Hola, Ana!
+        }
+    }
+
+- title: "3. Método con retorno"
+  description: "Un método puede devolver un valor usando la palabra clave return. El tipo de
+                dato del valor devuelto debe coincidir con el tipo de retorno declarado."
+  code: |
+    public class Ejemplo {
+
+        static int sumar(int a, int b) {
+            return a + b;
+        }
+
+        public static void main(String[] args) {
+            int resultado = sumar(5, 3);
+            System.out.println(resultado); // 8
+        }
+    }
+
+- title: "4. Múltiples parámetros"
+  description: "Un método puede recibir varios parámetros de distintos tipos. Se separan
+                con comas dentro de los paréntesis."
+  code: |
+    public class Ejemplo {
+
+        static String presentar(String nombre, int edad) {
+            return "Me llamo " + nombre + " y tengo " + edad + " años.";
+        }
+
+        public static void main(String[] args) {
+            String mensaje = presentar("Luis", 20);
+            System.out.println(mensaje);
+            // Me llamo Luis y tengo 20 años.
+        }
+    }
+
+- title: "5. Sobrecarga de métodos"
+  description: "Java permite definir varios métodos con el mismo nombre siempre que tengan
+                diferente lista de parámetros. Esto se llama sobrecarga (overloading)."
+  code: |
+    public class Ejemplo {
+
+        static int sumar(int a, int b) {
+            return a + b;
+        }
+
+        static double sumar(double a, double b) {
+            return a + b;
+        }
+
+        static int sumar(int a, int b, int c) {
+            return a + b + c;
+        }
+
+        public static void main(String[] args) {
+            System.out.println(sumar(2, 3));        // 5
+            System.out.println(sumar(1.5, 2.5));    // 4.0
+            System.out.println(sumar(1, 2, 3));     // 6
+        }
+    }
+
+- title: "6. Método que recibe y retorna un array"
+  description: "Los métodos también pueden trabajar con arrays como parámetros o como
+                valor de retorno, lo que los hace muy flexibles para procesar colecciones."
+  code: |
+    public class Ejemplo {
+
+        static int[] duplicar(int[] numeros) {
+            int[] resultado = new int[numeros.length];
+            for (int i = 0; i < numeros.length; i++) {
+                resultado[i] = numeros[i] * 2;
+            }
+            return resultado;
+        }
+
+        public static void main(String[] args) {
+            int[] original = {1, 2, 3, 4, 5};
+            int[] dobles = duplicar(original);
+
+            for (int n : dobles) {
+                System.out.print(n + " "); // 2 4 6 8 10
+            }
+        }
+    }

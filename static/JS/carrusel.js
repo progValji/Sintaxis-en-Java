@@ -1,190 +1,163 @@
-// ============================================
-// CARRUSEL DE EJERCICIOS
-// ============================================
-
-// ============================================
-// VARIABLES GLOBALES
-// ============================================
-
-let ejercicioActual = 0;
-let ejerciciosResueltos = new Set();
-
-// ============================================
-// ELEMENTOS DEL DOM
-// ============================================
-
-const progressCurrent = document.querySelector('.exercise-carousel__current');
-const progressTotal = document.querySelector('.exercise-carousel__total');
 const progressFill = document.querySelector('.exercise-carousel__progress-fill');
-const slideContainer = document.querySelector('.exercise-carousel__slide');
+const slideContainer = document.querySelector('.exercise-carousel');
 const btnPrev = document.querySelector('.exercise-carousel__button--prev');
 const btnNext = document.querySelector('.exercise-carousel__button--next');
+const feedback = slideContainer.querySelector('.exercise-carousel__feedback')
 
-// ============================================
-// FUNCIONES PRINCIPALES
-// ============================================
+let ejercicioActual = 1
+let categoria = null
+const CANTIDAD_EJERCICIOS = 10
 
-/**
- * Renderiza el ejercicio actual en el DOM
- */
-function renderizarEjercicio() {
-    const ejercicio = ejercicios[ejercicioActual];
-    
-    // Actualizar instrucciones
-    slideContainer.querySelector('.exercise-carousel__title').textContent = ejercicio.titulo;
-    slideContainer.querySelector('.exercise-carousel__description').textContent = ejercicio.descripcion;
-    
-    // Actualizar código
-    const codeElement = slideContainer.querySelector('.exercise-carousel__code code');
-    codeElement.textContent = ejercicio.codigo;
-    
-    // Re-aplicar Prism.js para resaltado de sintaxis
-    if (typeof Prism !== 'undefined') {
-        Prism.highlightElement(codeElement);
+async function comprobarFeedback(){
+    if(feedback.classList.contains('exercise-carousel__feedback--mostrar')){
+        await ocultarFeedback()
     }
-    
-    // Actualizar opciones
-    const optionsContainer = slideContainer.querySelector('.exercise-carousel__options');
-    optionsContainer.innerHTML = '';
-    
-    ejercicio.opciones.forEach((opcion, index) => {
-        const optionDiv = document.createElement('div');
-        optionDiv.className = 'exercise-carousel__option';
-        
-        const inputId = `ex${ejercicio.id}-opt${index}`;
-        
-        optionDiv.innerHTML = `
-            <input type="checkbox" id="${inputId}" name="errors" value="${opcion.value}" class="exercise-carousel__checkbox">
-            <label for="${inputId}" class="exercise-carousel__label">${opcion.texto}</label>
-        `;
-        
-        optionsContainer.appendChild(optionDiv);
+}
+
+function ocultarFeedback(){
+    return new Promise(resolve => {
+        feedback.classList.remove('exercise-carousel__feedback--mostrar')
+        setTimeout(() => {
+            feedback.classList.remove(`exercise-carousel__feedback--${categoria}`)
+            resolve()
+        }, 500)
+    })
+}
+
+function mostrarFeedback(){
+    feedback.classList.add(`exercise-carousel__feedback--${categoria}`)
+    feedback.classList.add('exercise-carousel__feedback--mostrar')
+}
+
+function actualizarBarraProgreso() {
+    const porcentaje = (ejercicioActual / CANTIDAD_EJERCICIOS) * 100;
+    progressFill.style.width = porcentaje + '%';
+}
+
+async function verificarRespuesta() {
+    const slideActivo = document.querySelector('.exercise-carousel__slide--active');
+    if (!slideActivo) return;
+
+    const form = slideActivo.querySelector('.exercise-carousel__options');
+    if (!form) return;
+
+    const radioSeleccionado = form.querySelector('input[name^="exercise"]:checked');
+    if (!radioSeleccionado) {
+        feedback.querySelector('p').textContent = 'Por favor selecciona una respuesta'
+        categoria = 'warning'
+        await comprobarFeedback()
+        mostrarFeedback()
+        return;
+    }
+
+    const respuestaUsuario = radioSeleccionado.value;
+
+    if(respuestaUsuario === slideActivo.dataset.respuesta){
+        await comprobarFeedback()
+        categoria = 'success'
+        feedback.querySelector('p').textContent = '¡Bien hecho! '
+        feedback.querySelector('p').textContent += slideActivo.dataset.explicacion
+    }
+    else{
+        await comprobarFeedback()
+        categoria = 'error'
+        feedback.querySelector('p').textContent = '¡Oh no!, vuelve a intentarlo'
+    }
+    mostrarFeedback()
+}
+
+function moverSlide(sentido){
+    const slideActivo = document.querySelector('.exercise-carousel__slide--active');
+    const slideProximo = sentido === 'next'? slideActivo.nextElementSibling : slideActivo.previousElementSibling
+    slideActivo.classList.add('exercise-carousel__slide--exit')
+
+    setTimeout(function(){
+        slideActivo.classList.remove('exercise-carousel__slide--active', 'exercise-carousel__slide--exit')
+    }, 500)
+
+    setTimeout(function(){
+        slideProximo.classList.add('exercise-carousel__slide--active')
+    }, 500)
+}
+
+function verificarEjercicioActual(){
+    if(ejercicioActual >= CANTIDAD_EJERCICIOS){
+        btnNext.disabled = true
+        btnPrev.disabled = false
+    }
+    else if(ejercicioActual == 1){
+        btnPrev.disabled = true
+        btnNext.disabled = false
+    }
+    else{
+        btnPrev.disabled = false
+        btnNext.disabled = false
+    }
+}
+
+function actualizarDotActivo() {
+    document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
+        const index = parseInt(dot.dataset.dotIndex, 10);
+        dot.classList.toggle('exercise-carousel__dot--active', index === ejercicioActual);
     });
-    
-    // Actualizar botón verificar
-    const btnVerificar = slideContainer.querySelector('.exercise-carousel__verify');
-    btnVerificar.setAttribute('data-answer', ejercicio.respuestasCorrectas.join(','));
-    
-    // Limpiar feedback
-    const feedback = slideContainer.querySelector('.exercise-carousel__feedback');
-    feedback.className = 'exercise-carousel__feedback';
-    feedback.textContent = '';
-    
-    // Actualizar progreso
-    actualizarProgreso();
-    
-    // Actualizar estado de botones de navegación
-    actualizarBotonesNavegacion();
 }
 
-/**
- * Actualiza la barra de progreso
- */
-function actualizarProgreso() {
-    const totalEjercicios = ejercicios.length;
-    const progreso = ((ejercicioActual + 1) / totalEjercicios) * 100;
+function irAEjercicio(numeroEjercicio) {
+    const slideActual = document.querySelector('.exercise-carousel__slide--active');
+    const slideDestino = document.querySelector(`[data-exercise="${numeroEjercicio}"]`);
     
-    progressCurrent.textContent = ejercicioActual + 1;
-    progressTotal.textContent = totalEjercicios;
-    progressFill.style.width = `${progreso}%`;
+    if (!slideDestino || numeroEjercicio === ejercicioActual) return;
+    
+    ejercicioActual = numeroEjercicio;
+    verificarEjercicioActual();
+    document.querySelector('.exercise-carousel__current').textContent = ejercicioActual;
+    actualizarBarraProgreso();
+    actualizarDotActivo()
+    
+    // Mover slide
+    slideActual.classList.add('exercise-carousel__slide--exit');
+    setTimeout(function(){
+        slideActual.classList.remove('exercise-carousel__slide--active', 'exercise-carousel__slide--exit');
+    }, 500);
+    setTimeout(function(){
+        slideDestino.classList.add('exercise-carousel__slide--active');
+    }, 500);
 }
 
-/**
- * Actualiza el estado de los botones de navegación
- */
-function actualizarBotonesNavegacion() {
-    // Botón Anterior: deshabilitado en el primer ejercicio
-    btnPrev.disabled = ejercicioActual === 0;
-    
-    // Botón Siguiente: deshabilitado si no ha resuelto el ejercicio actual
-    const estaResuelto = ejerciciosResueltos.has(ejercicioActual);
-    btnNext.disabled = !estaResuelto;
-}
+feedback.querySelector('button').addEventListener('click', function(){
+    ocultarFeedback()
+})
 
-/**
- * Verifica si la respuesta del usuario es correcta
- */
-function verificarRespuesta() {
-    const ejercicio = ejercicios[ejercicioActual];
-    const checkboxes = slideContainer.querySelectorAll('input[type="checkbox"]:checked');
-    const respuestasUsuario = Array.from(checkboxes).map(cb => cb.value).sort();
-    const respuestasCorrectas = ejercicio.respuestasCorrectas.sort();
-    
-    const feedback = slideContainer.querySelector('.exercise-carousel__feedback');
-    const btnVerificar = slideContainer.querySelector('.exercise-carousel__verify');
-    
-    // Comparar respuestas
-    const esCorrecta = JSON.stringify(respuestasUsuario) === JSON.stringify(respuestasCorrectas);
-    
-    if (esCorrecta) {
-        // Respuesta correcta
-        feedback.className = 'exercise-carousel__feedback exercise-carousel__feedback--visible exercise-carousel__feedback--success';
-        feedback.textContent = '¡Correcto! Has identificado todos los errores.';
-        
-        // Marcar ejercicio como resuelto
-        ejerciciosResueltos.add(ejercicioActual);
-        
-        // Deshabilitar verificar y habilitar siguiente
-        btnVerificar.disabled = true;
-        actualizarBotonesNavegacion();
-        
-    } else {
-        // Respuesta incorrecta
-        feedback.className = 'exercise-carousel__feedback exercise-carousel__feedback--visible exercise-carousel__feedback--error';
-        
-        if (respuestasUsuario.length === 0) {
-            feedback.textContent = 'Por favor, selecciona al menos una opción.';
-        } else if (respuestasUsuario.length < respuestasCorrectas.length) {
-            feedback.textContent = 'Te faltan errores por identificar. Revisa el código nuevamente.';
-        } else if (respuestasUsuario.length > respuestasCorrectas.length) {
-            feedback.textContent = 'Has seleccionado opciones incorrectas. Intenta de nuevo.';
-        } else {
-            feedback.textContent = 'Respuesta incorrecta. Verifica las líneas que seleccionaste.';
-        }
-    }
-}
-
-/**
- * Navega al ejercicio anterior
- */
-function navegarAnterior() {
-    if (ejercicioActual > 0) {
-        ejercicioActual--;
-        renderizarEjercicio();
-    }
-}
-
-/**
- * Navega al siguiente ejercicio
- */
-function navegarSiguiente() {
-    if (ejercicioActual < ejercicios.length - 1 && ejerciciosResueltos.has(ejercicioActual)) {
-        ejercicioActual++;
-        renderizarEjercicio();
-    }
-}
-
-// ============================================
-// EVENT LISTENERS
-// ============================================
-
-// Botón Verificar
 slideContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('exercise-carousel__verify')) {
         verificarRespuesta();
     }
 });
 
-// Botón Anterior
-btnPrev.addEventListener('click', navegarAnterior);
-
-// Botón Siguiente
-btnNext.addEventListener('click', navegarSiguiente);
-
-// ============================================
-// INICIALIZACIÓN
-// ============================================
-
-document.addEventListener('DOMContentLoaded', () => {
-    renderizarEjercicio();
+document.querySelectorAll('.exercise-carousel__dot').forEach(dot => {
+    dot.addEventListener('click', function() {
+        const numeroEjercicio = parseInt(this.dataset.dotIndex);
+        comprobarFeedback()
+        irAEjercicio(numeroEjercicio);
+    });
 });
+
+btnNext.addEventListener('click', function(){
+    ejercicioActual++
+    verificarEjercicioActual()
+    document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
+    actualizarBarraProgreso()
+    actualizarDotActivo()
+    comprobarFeedback()
+    moverSlide('next') 
+})
+
+btnPrev.addEventListener('click', function(){
+    ejercicioActual--
+    verificarEjercicioActual()
+    document.querySelector('.exercise-carousel__current').textContent = ejercicioActual
+    actualizarBarraProgreso()
+    actualizarDotActivo()
+    comprobarFeedback()
+    moverSlide('prev') 
+})

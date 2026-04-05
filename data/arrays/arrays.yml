@@ -1,0 +1,74 @@
+- title: "1. Declaración e inicialización"
+  description: "Un array es una estructura de datos que almacena múltiples valores del mismo tipo
+                en posiciones contiguas de memoria. Se accede a cada elemento mediante su índice,
+                comenzando desde 0."
+  code: |
+    // Declarar sin inicializar
+    int[] numeros = new int[5];
+
+    // Declarar e inicializar con valores
+    int[] numeros = {10, 20, 30, 40, 50};
+
+    // Declarar e inicializar con new
+    int[] numeros = new int[]{10, 20, 30, 40, 50};
+
+- title: "2. Acceder a elementos"
+  description: "Cada elemento del array se accede mediante su índice. El primer elemento tiene
+                índice 0 y el último tiene índice longitud - 1."
+  code: |
+    int[] numeros = {10, 20, 30, 40, 50};
+
+    System.out.println(numeros[0]); // 10
+    System.out.println(numeros[2]); // 30
+    System.out.println(numeros[4]); // 50
+
+- title: "3. Modificar elementos"
+  description: "Se puede cambiar el valor de cualquier posición del array usando su índice."
+  code: |
+    int[] numeros = {10, 20, 30};
+
+    numeros[1] = 99;
+
+    System.out.println(numeros[1]); // 99
+
+- title: "4. Recorrer un array con for"
+  description: "El bucle for clásico permite recorrer el array usando el índice. Es útil cuando
+                necesitas conocer la posición del elemento durante la iteración."
+  code: |
+    int[] numeros = {10, 20, 30, 40, 50};
+
+    for (int i = 0; i < numeros.length; i++) {
+        System.out.println("Índice " + i + ": " + numeros[i]);
+    }
+
+- title: "5. Recorrer un array con for-each"
+  description: "El for-each es una forma más simple y legible de recorrer todos los elementos
+                de un array cuando no necesitas el índice."
+  code: |
+    int[] numeros = {10, 20, 30, 40, 50};
+
+    for (int numero : numeros) {
+        System.out.println(numero);
+    }
+
+- title: "6. Array multidimensional"
+  description: "Java permite crear arrays de dos o más dimensiones. Los más comunes son los
+                bidimensionales, que se pueden visualizar como una tabla de filas y columnas."
+  code: |
+    // Declarar una matriz de 3 filas y 3 columnas
+    int[][] matriz = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9}
+    };
+
+    // Acceder a un elemento (fila 1, columna 2)
+    System.out.println(matriz[1][2]); // 6
+
+    // Recorrer la matriz
+    for (int i = 0; i < matriz.length; i++) {
+        for (int j = 0; j < matriz[i].length; j++) {
+            System.out.print(matriz[i][j] + " ");
+        }
+        System.out.println();
+    }
