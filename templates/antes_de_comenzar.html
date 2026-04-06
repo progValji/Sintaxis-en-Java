@@ -8,9 +8,13 @@
          /* Cards Grid */
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            grid-template-columns: repeat(2, minmax(270px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+
+            @media screen and (width <= 650px){
+                grid-template-columns: minmax(270px, 1fr);
+            }
         }
 
         .card {
