@@ -1,6 +1,6 @@
 {% macro render_topic(topic) %}
 <article class="topic">
-    <h1 class="topic__title italic">{{ topic.title }}</h1>
+    <h2 class="topic__title italic">{{ topic.title }}</h2>
     <p class="topic__paragraph fw-300">{{ topic.description }}</p>
     <pre class="language-java"><code class="line-numbers">{{ topic.code }}</code></pre>
 </article>

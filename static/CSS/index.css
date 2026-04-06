@@ -1,10 +1,5 @@
         /* primera seccion*/
-        .main__title{margin-bottom: 2rem;}
         .main__title p{text-align: center;}
-
-        .main__subtitle {
-            color: var(--color-text-secondary);
-        }
 
         .main__info {
             width: min(800px, 90%);
@@ -24,9 +19,9 @@
         }
 
         /* segunda seccion */
-        .main__container:nth-of-type(2) {color: var(--color-primary);}
+        .py-4:nth-of-type(2) {color: var(--color-primary);}
 
-        .main__container:nth-of-type(2) h1{
+        .py-4:nth-of-type(2) h1{
             text-align: center;
             font-size: 2.5rem;
         }
