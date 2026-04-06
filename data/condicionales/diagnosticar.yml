@@ -6,7 +6,7 @@
           int x = 10;
           if (x > 5)
             System.out.println("mayor");
-          } // error: llave extra
+          } 
         }
       }
     pregunta: "¿Compila?"
@@ -39,7 +39,7 @@
     codigo: |
       public class Main {
         public static void main(String[] args) {
-          int x = "10"; // error tipo
+          int x = "10";
           if (x > 5) {
             System.out.println("mayor");
           }

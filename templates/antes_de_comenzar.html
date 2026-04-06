@@ -1,14 +1,138 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Antes de comenzar</h1>
-    <p>hola</p>
+{% extends "base.html" %}
+{% block contenido %}
+<style>
+    /*Estas cards estan en el index, no quise poner los estilso en el main.css 
+    ya que solo las estoy ocupando 2 veces.*/
+        svg{width: 2rem; height: 2rem; color: var(--color-primary);}
 
-    <script src="{{ url_for('static', filename='JS/registrarVisita.js') }}"></script>
-</body>
-</html>
+         /* Cards Grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(10, 77, 104, 0.2);
+            border: 2px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 12px 40px rgba(0, 217, 255, 0.3);
+            background: rgba(10, 77, 104, 0.4);
+        }
+
+        .card__header{
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .card__icon {
+            font-size: 1rem;
+            display: block;
+        }
+
+        .card__title {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+        }
+
+        /* Botón */
+        .antes__accion {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .antes__boton {
+            text-decoration: none;
+            background-color: #2980b9;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .antes__boton:hover {
+            background-color: #1f6391;
+        }
+</style>
+<main class="container pt-4">
+    <div class="mb-3">
+        <h1 class="title neon">Antes de comenzar</h1>
+        <p class="text-center fw-300">Antes de iniciar, te recomendamos que leas esto. Te dará el contexto necesario para 
+            aprovechar mejor el contenido de esta página.</p>
+    </div>
+
+    <div class="cards">
+        <article class="card">
+            <div class="card__header">
+                <h2 class="card__title">Propósito</h2>
+                <div class="card__icon">
+                    <!-- Heroicons: flag -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v18m0-13.5 7-3 4 2 7-3v13.5l-7 3-4-2-7 3" />
+                    </svg>
+                </div>
+            </div>
+            <p class="card__description fw-300">El propósito de esta página es reforzar los fundamentos de programación usando Java como lenguaje base. Aunque los ejercicios están escritos en Java, el enfoque no es aprender Java como tal, sino desarrollar y fortalecer la lógica de programación, conceptos que aplican a cualquier lenguaje.</p>
+        </article>
+
+        <article class="card">
+            <div class="card__header">
+                <h2 class="card__title">¿A quién va dirigida?</h2>
+                <div class="card__icon">
+                    <!-- Heroicons: user-group -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                    </svg>
+                </div>
+            </div>
+            <p class="card__description fw-300">Está dirigida a cualquier persona que quiera reforzar sus bases de programación, ya sea porque siente que le faltan fundamentos sólidos o porque quiere repasar conceptos esenciales antes de avanzar a temas más complejos.</p>
+        </article>
+
+        <article class="card">
+            <div class="card__header">
+                <h2 class="card__title">¿Por qué es importante?</h2>
+                <div class="card__icon">
+                    <!-- Heroicons: light-bulb -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                    </svg>
+                </div>
+            </div>
+            <p class="card__description fw-300">Los fundamentos son la base de todo. Un programador con bases sólidas puede adaptarse a nuevos lenguajes, resolver problemas con mayor claridad y escribir código más limpio y eficiente. Sin esa base, es fácil avanzar en la superficie pero encontrar dificultades cuando los problemas se vuelven más complejos.</p>
+        </article>
+
+        <article class="card">
+            <div class="card__header">
+                <h2 class="card__title">Próximos pasos</h2>
+                <div class="card__icon">
+                    <!-- Heroicons: arrow-trending-up -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                    </svg>
+                </div>
+            </div>
+            <p class="card__description fw-300">Esta página te ayuda a practicar la lógica de programación, pero hay algo igual de importante que no debes descuidar: escribir código. Aquí practicas el razonamiento detrás de los programas, el siguiente paso natural es que lleves esa lógica a la práctica escribiendo tus propios ejercicios. Te recomendamos plataformas como Exercism, HackerRank o simplemente tu propio editor. Lo importante es que el código lo escribas tú.</p>
+        </article>
+
+    </div>
+
+    <div class="antes__accion">
+        <a href="{{ url_for('index') }}" class="antes__boton">Ir al inicio →</a>
+    </div>
+</main>
+
+<script src="{{ url_for('static', filename='JS/registrarVisita.js') }}"></script>
+{% endblock %}

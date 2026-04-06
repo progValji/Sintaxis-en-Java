@@ -68,7 +68,7 @@ def strings():
 
 @app.route("/antes_de_comenzar")
 def antes_de_comenzar():
-    return render_template("antes_de_comenzar.html")
+    return render_template("antes_de_comenzar.html", titulo='Introduccion')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

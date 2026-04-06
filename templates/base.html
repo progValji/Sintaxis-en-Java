@@ -7,51 +7,26 @@
     <link rel="icon" href="https://www.manualweb.net/img/logos/java.png">
     <title>Sintaxis De Java - {{ titulo }}</title>
     <style>
-        .banner {
-    background-color: #e8f4fd;
-    border-left: 4px solid #2980b9;
-    padding: 1rem 1.5rem;
-    margin-bottom: 2rem;
-}
+        .banner__boton{
+            color: var(--color-accent);
+            transition: color .5s;
+        }
 
-.banner__contenido {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
+        .banner__boton:hover{
+            color: var(--color-primary);
+        }
 
-.banner__texto {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #333;
-}
-
-.banner__boton {
-    text-decoration: none;
-    background-color: #2980b9;
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    white-space: nowrap;
-    font-size: 0.9rem;
-}
-
-.banner__boton:hover {
-    background-color: #1f6391;
-}
+        @media screen and (width <= 415px){
+            .header__logo{font-size: 24px;}
+            .banner__boton{font-size: 14px;}
+        }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container header__container">
             <h1 class="header__logo italic fw-700">⚡ SyntaxLab</h1>
-            <section class="banner">
-                <div class="banner__contenido">
-                    <p class="banner__texto">¿Es tu primera vez aquí? Te recomendamos visitar esta sección antes de comenzar</p>
-                    <a href="{{ url_for('antes_de_comenzar') }}" class="banner__boton">Antes de comenzar →</a>
-                </div>
-            </section>
+            <a href="{{ url_for('antes_de_comenzar') }}" class="banner__boton">Antes de comenzar →</a>
         </div>
     </header>
     {% block contenido %}
