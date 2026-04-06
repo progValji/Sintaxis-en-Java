@@ -100,19 +100,3 @@
     // Python
     // C++
     // JavaScript
-
-- title: "9. Convertir entre String y números"
-  description: "Java permite convertir Strings a números y viceversa usando métodos
-                de las clases envolventes como Integer, Double, entre otras."
-  code: |
-    // String a número
-    String numeroTexto = "42";
-    int numero = Integer.parseInt(numeroTexto);
-    double decimal = Double.parseDouble("3.14");
-
-    System.out.println(numero + 8);   // 50
-    System.out.println(decimal + 1);  // 4.140000000000001
-
-    // Número a String
-    String resultado = String.valueOf(numero);
-    System.out.println(resultado);    // "42"

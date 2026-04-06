@@ -50,25 +50,3 @@
     for (int numero : numeros) {
         System.out.println(numero);
     }
-
-- title: "6. Array multidimensional"
-  description: "Java permite crear arrays de dos o más dimensiones. Los más comunes son los
-                bidimensionales, que se pueden visualizar como una tabla de filas y columnas."
-  code: |
-    // Declarar una matriz de 3 filas y 3 columnas
-    int[][] matriz = {
-        {1, 2, 3},
-        {4, 5, 6},
-        {7, 8, 9}
-    };
-
-    // Acceder a un elemento (fila 1, columna 2)
-    System.out.println(matriz[1][2]); // 6
-
-    // Recorrer la matriz
-    for (int i = 0; i < matriz.length; i++) {
-        for (int j = 0; j < matriz[i].length; j++) {
-            System.out.print(matriz[i][j] + " ");
-        }
-        System.out.println();
-    }

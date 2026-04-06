@@ -44,7 +44,7 @@ def arrays():
 
 @app.route("/matrinces")
 def matrices():
-    return render_template('matrinces.html',
+    return render_template('matrices.html',
                            topics=load_data('matrices', 'matrices.yml'),
                            exercises=get_all_exercises('matrices'))
 

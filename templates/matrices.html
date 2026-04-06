@@ -1,10 +1,6 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/prism.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/carrusel.css')}}">
 <link href='https://cdn.boxicons.com/3.0.3/fonts/basic/boxicons.min.css' rel='stylesheet'>
-<style>
-    .main__title p{margin-bottom: 1rem;}
-    .main__title{ max-inline-size: 100ch; margin: 0 auto 2rem;}
-</style>
 {% extends "base.html" %}
 {% from "macros/_topic.html" import render_topic %}
 {% from "macros/_exercise_carousel.html" import exercise_carousel %}
@@ -12,21 +8,34 @@
 {% block contenido %}
     <main>
         <section class="py-4 container">
-            <div class="main__title">
+            <div class="mx-auto mb-3 max-inline-size">
                 <h1 class="title neon">Matrices</h1>
     
-                <p class="fw-300"></p>
+                <p class="fw-300 mb-1">Las estructuras condicionales en programación son instrucciones que permiten tomar decisiones 
+                dentro de un programa. Su función principal es ejecutar <span class="fw-600 text-muted">diferentes bloques de código</span> según 
+                se cumpla o no una determinada <span class="fw-600 text-muted">condición lógica</span> (por ejemplo, si una variable tiene cierto 
+                valor).</p>
     
-                <p class="fw-300"></p>
+                <p class="fw-300">En otras palabras, permiten que el programa reaccione ante distintas situaciones.
+                El tipo más común de estructura condicional es el if, que evalúa una condición y ejecuta un bloque de código
+                solo si esta es verdadera. También existen variantes como if...else (para elegir entre dos opciones) y 
+                switch o else if (para múltiples alternativas).</p>
             </div>
-            <div class="topics">
-                {% for topic in topics %}
-                    {{ render_topic(topic) }}
-                {% endfor %}
+            <div>
+                <h1 class="subtitle text-center">Fundamentos del tema</h1>
+                <div class="topics">
+                    {% for topic in topics %}
+                        {{ render_topic(topic) }}
+                    {% endfor %}
+                </div>
             </div>
         </section>
 
-        {{ exercise_carousel(exercises) }}
+        <section class="container main__ejercicios">
+            <h1 class="subtitle text-center">Práctica</h1>
+            <p class="text-center mb-2">Pon a prueba tu comprensión de matrices y el manejo de datos en múltiples dimensiones. Observa el código y elige la respuesta correcta.</p>
+            {{ exercise_carousel(exercises) }}
+        </section>
 
     </main>
 

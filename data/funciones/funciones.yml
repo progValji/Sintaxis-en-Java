@@ -88,27 +88,3 @@
             System.out.println(sumar(1, 2, 3));     // 6
         }
     }
-
-- title: "6. Método que recibe y retorna un array"
-  description: "Los métodos también pueden trabajar con arrays como parámetros o como
-                valor de retorno, lo que los hace muy flexibles para procesar colecciones."
-  code: |
-    public class Ejemplo {
-
-        static int[] duplicar(int[] numeros) {
-            int[] resultado = new int[numeros.length];
-            for (int i = 0; i < numeros.length; i++) {
-                resultado[i] = numeros[i] * 2;
-            }
-            return resultado;
-        }
-
-        public static void main(String[] args) {
-            int[] original = {1, 2, 3, 4, 5};
-            int[] dobles = duplicar(original);
-
-            for (int n : dobles) {
-                System.out.print(n + " "); // 2 4 6 8 10
-            }
-        }
-    }
