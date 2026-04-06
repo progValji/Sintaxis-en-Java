@@ -4,10 +4,11 @@ from pathlib import Path
 
 app = Flask(__name__)
 
-EXERCISES_DIR = Path('data/')
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
 
 def load_data(seccion, filename):
-    with open(EXERCISES_DIR / seccion / filename, encoding='utf-8') as f:
+    with open(DATA_DIR / seccion / filename, encoding='utf-8') as f:
         return yaml.safe_load(f)
     
 def get_all_exercises(seccion):
