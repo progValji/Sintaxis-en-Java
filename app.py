@@ -22,43 +22,53 @@ def get_all_exercises(seccion):
 
 @app.route("/")
 def index(): 
-    return render_template('index.html')
+    return render_template('index.html', titulo='Inicio')
 
 @app.route("/condicionales")
 def condicionales():
     return render_template('condicionales.html',
                            topics=load_data('condicionales', 'condicionales.yml'),
-                           exercises=get_all_exercises('condicionales'))
+                           exercises=get_all_exercises('condicionales'),
+                           titulo='Condicionales')
 
 @app.route("/ciclos")
 def ciclos():
     return render_template('ciclos.html',
                            topics=load_data('ciclos', 'ciclos.yml'),
-                           exercises=get_all_exercises('ciclos'))
+                           exercises=get_all_exercises('ciclos'),
+                           titulo='Ciclos')
 
 @app.route("/arrays")
 def arrays():
     return render_template('arrays.html',
                            topics=load_data('arrays', 'arrays.yml'),
-                           exercises=get_all_exercises('arrays'))
+                           exercises=get_all_exercises('arrays'),
+                           titulo='Arrays')
 
 @app.route("/matrinces")
 def matrices():
     return render_template('matrices.html',
                            topics=load_data('matrices', 'matrices.yml'),
-                           exercises=get_all_exercises('matrices'))
+                           exercises=get_all_exercises('matrices'),
+                           titulo='Matrices')
 
 @app.route("/funciones")
 def funciones():
     return render_template('funciones.html',
                            topics=load_data('funciones', 'funciones.yml'),
-                           exercises=get_all_exercises('funciones'))
+                           exercises=get_all_exercises('funciones'),
+                           titulo='Funciones')
 
 @app.route("/strings")
 def strings():
     return render_template('strings.html',
                            topics=load_data('strings', 'strings.yml'),
-                           exercises=get_all_exercises('strings'))
+                           exercises=get_all_exercises('strings'),
+                           titulo='Strings')
+
+@app.route("/antes_de_comenzar")
+def antes_de_comenzar():
+    return render_template("antes_de_comenzar.html")
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
